@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:waretrack_mini/core/services/storage_service.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations_bn.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations_en.dart';
 
 enum AppLanguage {
   english('en'),
-  japanese('ja');
+  bangla('bn');
 
   const AppLanguage(this.code);
 
@@ -13,16 +16,16 @@ enum AppLanguage {
 
   Locale get locale => Locale(code);
 
+  /// Localized strings for this language, for use outside the widget tree
+  /// (services, blocs) where a [BuildContext] isn't available.
+  AppLocalizations get localizations => switch (this) {
+    AppLanguage.english => AppLocalizationsEn(),
+    AppLanguage.bangla => AppLocalizationsBn(),
+  };
+
   static AppLanguage fromCode(String? code) {
     return switch (code) {
-      'ja' => AppLanguage.japanese,
-      _ => AppLanguage.english,
-    };
-  }
-
-  static AppLanguage fromCountryCode(String? countryCode) {
-    return switch (countryCode?.toUpperCase()) {
-      'JP' => AppLanguage.japanese,
+      'bn' => AppLanguage.bangla,
       _ => AppLanguage.english,
     };
   }
@@ -170,22 +173,31 @@ final class AppSettings {
   const AppSettings({
     this.scanner = const ScannerSettings(),
     this.transfer = const TransferSettings(),
+    this.language = AppLanguage.english,
   });
 
   final ScannerSettings scanner;
   final TransferSettings transfer;
+  final AppLanguage language;
 
-  AppLanguage get language => AppLanguage.japanese;
-
-  AppSettings copyWith({ScannerSettings? scanner, TransferSettings? transfer}) {
+  AppSettings copyWith({
+    ScannerSettings? scanner,
+    TransferSettings? transfer,
+    AppLanguage? language,
+  }) {
     return AppSettings(
       scanner: scanner ?? this.scanner,
       transfer: transfer ?? this.transfer,
+      language: language ?? this.language,
     );
   }
 
   Map<String, Object?> toJson() {
-    return {'scanner': scanner.toJson(), 'transfer': transfer.toJson()};
+    return {
+      'scanner': scanner.toJson(),
+      'transfer': transfer.toJson(),
+      'language': language.code,
+    };
   }
 
   factory AppSettings.defaults() => const AppSettings();
@@ -194,6 +206,9 @@ final class AppSettings {
     return AppSettings(
       scanner: ScannerSettings.fromJson(json['scanner']),
       transfer: TransferSettings.fromJson(json['transfer']),
+      language: AppLanguage.fromCode(
+        json['language'] is String ? json['language']! as String : null,
+      ),
     );
   }
 }
@@ -210,7 +225,7 @@ final class AppSettingsController extends ChangeNotifier {
 
   AppSettings get settings => _settings;
 
-  Locale get locale => const Locale('ja');
+  Locale get locale => _settings.language.locale;
 
   Future<void> update(AppSettings settings) async {
     _settings = settings;
@@ -224,6 +239,10 @@ final class AppSettingsController extends ChangeNotifier {
 
   Future<void> setTransfer(TransferSettings transfer) {
     return update(_settings.copyWith(transfer: transfer));
+  }
+
+  Future<void> setLanguage(AppLanguage language) {
+    return update(_settings.copyWith(language: language));
   }
 }
 
@@ -251,7 +270,6 @@ final class AppSettingsRepository {
 
       final settings = AppSettings.fromJson(decoded);
       if (decoded.containsKey('themeMode') ||
-          decoded.containsKey('language') ||
           decoded.containsKey('hasSelectedLanguage')) {
         await save(settings);
       }

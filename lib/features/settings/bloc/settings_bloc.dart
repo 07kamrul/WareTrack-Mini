@@ -73,6 +73,10 @@ final class SettingsBloc extends Cubit<SettingsState> {
     );
   }
 
+  Future<void> setLanguage(AppLanguage language) {
+    return _settingsController.setLanguage(language);
+  }
+
   void _syncSettings() {
     if (!isClosed) {
       emit(state.copyWith(settings: _settingsController.settings));

@@ -1,7 +1,7 @@
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 import 'package:waretrack_mini/core/models/inspection_work_type.dart';
 
-/// Completed work order model for 棚入れ (Stocking).
+/// Completed work order model for Shelf Placement (Stocking).
 final class StockingCompletedOrderModel implements CompletedOrderRecord {
   const StockingCompletedOrderModel({
     required this.slipNumber,

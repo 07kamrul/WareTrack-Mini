@@ -8,6 +8,7 @@ import 'package:waretrack_mini/features/settings/bloc/settings_bloc.dart';
 import 'package:waretrack_mini/features/settings/bloc/settings_state.dart';
 import 'package:waretrack_mini/features/settings/widgets/app_info_card.dart';
 import 'package:waretrack_mini/features/settings/widgets/code_verification_setting_card.dart';
+import 'package:waretrack_mini/features/settings/widgets/language_setting_card.dart';
 import 'package:waretrack_mini/features/settings/widgets/save_transfer_setting_card.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -59,6 +60,11 @@ class _SettingsView extends StatelessWidget {
                               metrics.pagePadding + bottomInset,
                             ),
                             children: [
+                              LanguageSettingCard(
+                                language: settings.language,
+                                onLanguageChanged: bloc.setLanguage,
+                              ),
+                              const SizedBox(height: 16),
                               SaveTransferSettingCard(
                                 settings: settings.transfer,
                                 onSaveFormatChanged: bloc.setSaveFormat,

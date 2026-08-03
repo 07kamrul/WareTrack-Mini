@@ -48,8 +48,8 @@ void main() {
 
     await tester.pumpWidget(
       const MaterialApp(
-        locale: Locale('ja'),
-        supportedLocales: [Locale('ja')],
+        locale: Locale('en'),
+        supportedLocales: [Locale('en'), Locale('bn')],
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -63,13 +63,13 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('送信'));
+    await tester.tap(find.text('Send'));
     await tester.pumpAndSettle();
 
     expect(
       findVisibleText(
-        '送信先メールアドレスが設定されていません。'
-        '初期設定メニューからメールアドレスを設定してください。',
+        'The destination email address is not configured. Please set it '
+        'from the Initial Setup menu.',
       ),
       findsOneWidget,
     );
@@ -101,8 +101,8 @@ void main() {
 
     await tester.pumpWidget(
       const MaterialApp(
-        locale: Locale('ja'),
-        supportedLocales: [Locale('ja')],
+        locale: Locale('en'),
+        supportedLocales: [Locale('en'), Locale('bn')],
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -116,22 +116,22 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('棚入れ20260623143045'), findsOneWidget);
+    expect(find.text('ShelfPlacement20260623143045'), findsOneWidget);
     final stockingCard = find.ancestor(
-      of: find.text('棚入れ20260623143045'),
+      of: find.text('ShelfPlacement20260623143045'),
       matching: find.byType(Card),
     );
     await tester.tap(
-      find.descendant(of: stockingCard, matching: find.text('表示')),
+      find.descendant(of: stockingCard, matching: find.text('View')),
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('棚番号'), findsOneWidget);
-    expect(find.text('バーコード/QR'), findsOneWidget);
-    expect(find.text('検品数'), findsOneWidget);
-    expect(find.textContaining('棚判定'), findsNothing);
-    expect(find.text('日時'), findsNothing);
-    expect(find.text('ユーザーID'), findsNothing);
+    expect(find.text('Shelf Number'), findsOneWidget);
+    expect(find.text('Barcode / QR'), findsOneWidget);
+    expect(find.text('Inspection Quantity'), findsOneWidget);
+    expect(find.textContaining('Shelf match'), findsNothing);
+    expect(find.text('Date/Time'), findsNothing);
+    expect(find.text('User ID'), findsNothing);
     expect(find.text('abc'), findsOneWidget);
     expect(find.text('123'), findsOneWidget);
     expect(find.text('user-007'), findsNothing);
@@ -184,7 +184,7 @@ final class _FakeAppDatabase implements AppDatabase {
     if (showStockingWork && workType == InspectionWorkType.stocking) {
       return <ReceivingCompletedWork>[
         ReceivingCompletedWork(
-          slipNumber: '棚入れ20260623143045',
+          slipNumber: 'ShelfPlacement20260623143045',
           totalItems: 1,
           totalQuantity: 2,
           completedAt: DateTime(2026, 1, 2, 3, 4, 5),

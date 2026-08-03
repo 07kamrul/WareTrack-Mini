@@ -39,9 +39,11 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
       _validationErrorMessage = null;
     });
 
+    final l10n = AppLocalizations.of(context);
+
     if (code.isEmpty) {
       setState(() {
-        _validationErrorMessage = '認証コードを入力してください。';
+        _validationErrorMessage = l10n.authCodeRequired;
       });
       return;
     }
@@ -49,7 +51,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
     final RegExp digitRegex = RegExp(r'^\d{8}$');
     if (!digitRegex.hasMatch(code)) {
       setState(() {
-        _validationErrorMessage = '認証コードは8桁の数字で入力してください。';
+        _validationErrorMessage = l10n.authCodeInvalidFormat;
       });
       return;
     }

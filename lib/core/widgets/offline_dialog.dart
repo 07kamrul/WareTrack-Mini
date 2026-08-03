@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:waretrack_mini/core/api_services/api_connection_guard.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/core/widgets/validation_error_dialog.dart';
 
-/// Single source of truth for the message shown whenever an API request fails
+/// Single source of truth for the dialog shown whenever an API request fails
 /// because of a network/connection problem (no internet, timeout, socket
 /// failure, DNS lookup failure, etc.). Shown app-wide so the wording stays
 /// consistent across every screen.
-const String offlineMessage =
-    'インターネットに接続されていません。\n接続状況を確認して、もう一度お試しください。';
-
 void showOfflineDialog(BuildContext context) {
-  showValidationErrorDialog(context, offlineMessage);
+  showValidationErrorDialog(
+    context,
+    AppLocalizations.of(context).offlineMessage,
+  );
 }
 
 /// Centralized network-error handler for the UI layer.

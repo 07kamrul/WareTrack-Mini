@@ -18,7 +18,7 @@ abstract interface class CompletedOrderRecord {
   /// Identifies which menu this record belongs to.
   InspectionWorkType get workType;
 
-  /// Human-readable menu label (e.g. '入荷検品').
+  /// Human-readable menu label (e.g. 'Receiving').
   String get menuName;
 
   /// Whether this order has already been sent successfully by email/API.

@@ -78,15 +78,18 @@ final class CompletedWorkService {
       await getCompletedWorkDetails(menuType, slipNumber),
     );
 
+    final language = _settingsController.settings.language;
+    final l10n = language.localizations;
+
     return _exportFileService.generateExportFile(
       menuName: menuType.menuName,
       slipNumber: slipNumber,
       format: _selectedSendFormat.name,
       items: _exportItems(details),
       completedAt: completedAt,
-      language: _settingsController.settings.language,
-      firstColumnLabel: _usesShelfStorage(menuType) ? '棚番号' : null,
-      productCodeColumnLabel: _usesShelfStorage(menuType) ? 'バーコード/QR' : null,
+      language: language,
+      firstColumnLabel: _usesShelfStorage(menuType) ? l10n.shelfNumberLabel : null,
+      productCodeColumnLabel: _usesShelfStorage(menuType) ? l10n.barcodeQr : null,
       fileNameFromSlip: _usesShelfStorage(menuType),
     );
   }

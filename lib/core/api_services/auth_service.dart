@@ -6,9 +6,12 @@ import 'package:http/http.dart' as http;
 import 'package:waretrack_mini/core/api_services/api_connection_guard.dart';
 import 'package:waretrack_mini/core/api_services/base_api.dart';
 import 'package:waretrack_mini/core/constants/verification_storage_keys.dart';
+import 'package:waretrack_mini/core/services/app_bindings.dart';
 import 'package:waretrack_mini/core/services/device_info_service.dart';
 import 'package:waretrack_mini/core/services/storage_service.dart';
 import 'package:waretrack_mini/core/utils/app_configure.dart';
+import 'package:waretrack_mini/core/utils/app_settings.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/data/models/device_verification_response_model.dart';
 import 'package:waretrack_mini/data/models/trial_status_model.dart';
 import 'package:waretrack_mini/data/models/user_model.dart';
@@ -46,6 +49,14 @@ class AuthServiceImpl implements AuthService {
 
   final ApiConnectionGuard? _connectionGuard;
 
+  /// Falls back to English when [AppSettingsController] isn't registered
+  /// (e.g. in unit tests that construct [AuthServiceImpl] directly).
+  static AppLocalizations get _l10n =>
+      (sl.isRegistered<AppSettingsController>()
+              ? sl<AppSettingsController>().settings.language
+              : AppLanguage.english)
+          .localizations;
+
   // TODO: Temporarily disabled.
   // @override
   // Future<UserModel?> checkDeviceVerification() async {
@@ -74,7 +85,7 @@ class AuthServiceImpl implements AuthService {
   //       return null;
   //     }
   //
-  //     throw Exception(json['message'] ?? '端末の認証状態を確認できませんでした。');
+  //     throw Exception(json['message'] ?? 'Unable to check the device verification status.');
   //   } catch (e) {
   //     throw Exception(e.toString());
   //   }
@@ -105,7 +116,7 @@ class AuthServiceImpl implements AuthService {
         return user;
       }
 
-      throw Exception(json['message'] ?? '認証に失敗しました。もう一度お試しください。');
+      throw Exception(json['message'] ?? _l10n.authenticationFailedRetry);
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -124,7 +135,7 @@ class AuthServiceImpl implements AuthService {
       return TrialStatusModel.fromJson(json);
     }
 
-    throw Exception(json['message'] ?? '試用状況を確認できませんでした。');
+    throw Exception(json['message'] ?? _l10n.trialStatusCheckFailed);
   }
 
   Future<String> _getRequiredDeviceUuid() async {

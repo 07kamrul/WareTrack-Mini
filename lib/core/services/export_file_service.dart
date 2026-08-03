@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:waretrack_mini/core/utils/app_settings.dart';
 import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
-import 'package:waretrack_mini/core/utils/localization/app_localizations_ja.dart';
 
 final class ExportInspectionItem {
   const ExportInspectionItem({
@@ -42,8 +41,6 @@ final class ExportFileResult {
 final class ExportFileService {
   const ExportFileService();
 
-  static const String emailSubject = 'スマートフォンハンディ エクスポートファイル';
-  static const String emailBody = 'エクスポートファイルを添付しましたので、ご確認ください。';
   static const MethodChannel _downloadsChannel = MethodChannel(
     'com.anshintech.waretrackmini/downloads',
   );
@@ -54,7 +51,7 @@ final class ExportFileService {
     required String format,
     required List<ExportInspectionItem> items,
     DateTime? completedAt,
-    AppLanguage language = AppLanguage.japanese,
+    AppLanguage language = AppLanguage.english,
     String? firstColumnLabel,
     String? productCodeColumnLabel,
     bool fileNameFromSlip = false,
@@ -128,7 +125,7 @@ final class ExportFileService {
     required String format,
     required List<ExportInspectionItem> items,
     DateTime? completedAt,
-    AppLanguage language = AppLanguage.japanese,
+    AppLanguage language = AppLanguage.english,
     String? firstColumnLabel,
     String? productCodeColumnLabel,
     bool fileNameFromSlip = false,
@@ -264,11 +261,16 @@ final class ExportFileService {
   Future<void> share(
     ExportFileResult result, {
     required String emailAddress,
+    AppLanguage language = AppLanguage.english,
   }) async {
     if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       await _downloadsChannel.invokeMethod<void>(
         'shareExcelFile',
-        buildShareArguments(result, emailAddress: emailAddress),
+        buildShareArguments(
+          result,
+          emailAddress: emailAddress,
+          language: language,
+        ),
       );
       return;
     }
@@ -280,20 +282,22 @@ final class ExportFileService {
   Map<String, Object?> buildShareArguments(
     ExportFileResult result, {
     required String emailAddress,
+    AppLanguage language = AppLanguage.english,
   }) {
     final normalizedEmailAddress = emailAddress.trim();
     if (normalizedEmailAddress.isEmpty) {
       throw const FormatException('Email address is missing.');
     }
 
+    final l10n = _localizations(language);
     return <String, Object?>{
       'fileName': result.fileName,
       'filePath': result.filePath,
       'contentUri': result.contentUri,
       'emailAddress': normalizedEmailAddress,
       'mimeType': result.mimeType,
-      'subject': emailSubject,
-      'body': emailBody,
+      'subject': l10n.emailSubjectExport,
+      'body': l10n.emailBodyExport,
     };
   }
 
@@ -322,15 +326,15 @@ final class ExportFileService {
     final extension = _fileExtension(saveFormat);
     final timestamp = _formatSavedDate(completedAt);
 
-    // Shelf-storage menus (棚入れ / 棚卸) already encode the menu name and
-    // timestamp inside the slip number, so the file name only needs the
-    // romanized prefix and the timestamp once: e.g. tanaire20260629135250.csv.
+    // Shelf-storage menus (Shelf Placement / Stocktaking) already encode the
+    // menu name and timestamp inside the slip number, so the file name only
+    // needs the prefix and the timestamp once: e.g. Shelf20260629135250.csv.
     if (fileNameFromSlip) {
       return '$fileNamePrefix$timestamp.$extension';
     }
 
-    // Order-based menus (入荷検品 / 出荷検品):
-    // e.g. Nyukakenpin_123456_20260629135250.csv
+    // Order-based menus (Receiving / Shipping):
+    // e.g. Receiving_123456_20260629135250.csv
     final safeSlip = _sanitizeFileNamePart(slipNumber);
     return '${fileNamePrefix}_${safeSlip}_$timestamp.$extension';
   }
@@ -380,7 +384,7 @@ final class ExportFileService {
   }
 
   static AppLocalizations _localizations(AppLanguage language) {
-    return AppLocalizationsJa();
+    return language.localizations;
   }
 
   static String _formatSavedDate(DateTime value) {

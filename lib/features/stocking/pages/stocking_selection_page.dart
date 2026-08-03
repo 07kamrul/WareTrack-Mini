@@ -10,7 +10,7 @@ import 'package:waretrack_mini/features/stocking/bloc/stocking_bloc.dart';
 import 'package:waretrack_mini/features/stocking/pages/stocking_scan_page.dart';
 import 'package:waretrack_mini/features/stocking/services/stocking_service.dart';
 
-/// Entry point for 棚入れ (Shelf Storage) feature.
+/// Entry point for Shelf Placement (Shelf Storage) feature.
 class StockingSelectionPage extends StatelessWidget {
   const StockingSelectionPage({super.key});
 

@@ -4,10 +4,10 @@
 /// It is intentionally placed in `core/` so every feature can reference it
 /// without creating cross-feature dependencies.
 enum InspectionWorkType {
-  receiving(menuName: '入荷検品'),
-  shipping(menuName: '出荷検品'),
-  stocking(menuName: '棚入れ'),
-  inventory(menuName: '棚卸');
+  receiving(menuName: 'Receiving'),
+  shipping(menuName: 'Shipping'),
+  stocking(menuName: 'ShelfPlacement'),
+  inventory(menuName: 'Stocktaking');
 
   const InspectionWorkType({required this.menuName});
 

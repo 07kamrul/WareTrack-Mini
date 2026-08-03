@@ -15,7 +15,7 @@ void main() {
 
     expect(find.byType(AlertDialog), findsOneWidget);
 
-    await tester.tap(find.text('閉じる'));
+    await tester.tap(find.text('Close'));
     await tester.pumpAndSettle();
 
     expect(find.byType(AlertDialog), findsNothing);
@@ -33,7 +33,7 @@ class _TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: const Locale('ja'),
+      locale: const Locale('en'),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

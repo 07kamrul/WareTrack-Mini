@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waretrack_mini/core/api_services/auth_service.dart';
 import 'package:waretrack_mini/core/services/app_bindings.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/core/widgets/dialog_message_text.dart';
 import 'package:waretrack_mini/core/widgets/offline_dialog.dart';
 import 'package:waretrack_mini/features/settings/widgets/settings_section_card.dart';
@@ -30,11 +31,12 @@ class _CodeVerificationSettingCardState
 
   Future<void> _submit() async {
     final code = _codeController.text.trim();
+    final l10n = AppLocalizations.of(context);
     FocusScope.of(context).unfocus();
 
     if (code.isEmpty) {
       setState(() {
-        _message = '承認コードを入力してください。';
+        _message = l10n.approvalCodeRequired;
         _isError = true;
       });
       return;
@@ -59,8 +61,8 @@ class _CodeVerificationSettingCardState
       await showDialog<void>(
         context: context,
         builder: (_) => AlertDialog(
-          title: const DialogMessageText('完了'),
-          content: const DialogMessageText('承認コードの確認が完了しました。'),
+          title: DialogMessageText(l10n.completed),
+          content: DialogMessageText(l10n.approvalCodeVerifiedMessage),
           actions: [
             TextButton(
               onPressed: () {
@@ -73,7 +75,7 @@ class _CodeVerificationSettingCardState
                   _isError = false;
                 });
               },
-              child: const Text('OK'),
+              child: Text(l10n.ok),
             ),
           ],
         ),
@@ -105,17 +107,15 @@ class _CodeVerificationSettingCardState
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return SettingsSectionCard(
-      title: '承認コード確認',
+      title: l10n.codeVerification,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            '登録済みの端末がダウンロードシステムから削除された場合は、'
-            'アプリを再ダウンロード・再インストールする必要はありません。\n'
-            '現在インストールされているアプリの承認コードを入力すると、'
-            '端末を再登録できます。',
+            l10n.codeVerificationSettingDescription,
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),
@@ -127,7 +127,7 @@ class _CodeVerificationSettingCardState
               Expanded(
                 child: SettingsTextField(
                   controller: _codeController,
-                  label: '承認コード',
+                  label: l10n.code,
                   keyboardType: TextInputType.number,
                   onChanged: (_) {
                     if (_message != null) {
@@ -151,7 +151,7 @@ class _CodeVerificationSettingCardState
                             color: Colors.white,
                           ),
                         )
-                      : const Text('確認'),
+                      : Text(l10n.submit),
                 ),
               ),
             ],

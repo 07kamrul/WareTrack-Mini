@@ -1,11 +1,18 @@
 import 'dart:io';
 
 import 'package:android_id/android_id.dart';
+import 'package:waretrack_mini/core/services/app_bindings.dart';
+import 'package:waretrack_mini/core/utils/app_settings.dart';
 
 final class DeviceInfoService {
   DeviceInfoService._();
 
-  static const String retrievalErrorMessage = '端末IDの取得に失敗しました。\nもう一度お試しください。';
+  static String get retrievalErrorMessage => _currentLanguage.localizations
+      .deviceIdRetrievalFailed;
+
+  static AppLanguage get _currentLanguage => sl.isRegistered<AppSettingsController>()
+      ? sl<AppSettingsController>().settings.language
+      : AppLanguage.english;
 
   static String? _deviceUuid;
 

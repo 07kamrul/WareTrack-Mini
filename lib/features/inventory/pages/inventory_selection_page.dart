@@ -42,8 +42,8 @@ String inventoryTitle(AppLocalizations localizations) =>
 
 const ScannerOption _inventoryScannerOption = ScannerOption(
   key: 'inventory',
-  title: '棚卸',
-  subtitle: '棚卸バーコード検品',
+  title: 'Stocktaking',
+  subtitle: 'Stocktaking Barcode Inspection',
   formats: [
     ScannerFormat.qrCode,
     ScannerFormat.code39,

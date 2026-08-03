@@ -1,6 +1,6 @@
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 
-/// Completed work item model for 棚入れ (Stocking).
+/// Completed work item model for Shelf Placement (Stocking).
 ///
 /// The [slipNumber] field stores the **shelf number** — consistent with how the
 /// SQLite `stocking_completed_items` table maps `shelf_number` into the first
@@ -15,7 +15,7 @@ final class StockingCompletedItemModel implements CompletedItemRecord {
     required this.userId,
   });
 
-  /// Shelf number (棚番号). Stored in [slipNumber] to align with the
+  /// Shelf number. Stored in [slipNumber] to align with the
   /// [CompletedItemRecord] interface and the export column layout.
   @override
   final String slipNumber;

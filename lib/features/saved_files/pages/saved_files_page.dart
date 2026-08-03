@@ -325,6 +325,7 @@ class _StockingDetailBody extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final borderColor = colorScheme.outlineVariant;
+    final l10n = AppLocalizations.of(context);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 24),
@@ -340,7 +341,7 @@ class _StockingDetailBody extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                '検品一覧',
+                l10n.inspectionList,
                 style: theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w800,
                   letterSpacing: 0,
@@ -361,9 +362,9 @@ class _StockingDetailBody extends StatelessWidget {
               TableRow(
                 decoration: BoxDecoration(color: colorScheme.primary),
                 children: [
-                  _SavedTableHeaderCell('棚番号'),
-                  _SavedTableHeaderCell('バーコード/QR'),
-                  _SavedTableHeaderCell('検品数'),
+                  _SavedTableHeaderCell(l10n.shelfNumberLabel),
+                  _SavedTableHeaderCell(l10n.barcodeQr),
+                  _SavedTableHeaderCell(l10n.inspectionQuantity),
                 ],
               ),
               for (final detail in details)

@@ -23,7 +23,7 @@ class WareTrackMiniApp extends StatefulWidget {
   const WareTrackMiniApp({super.key});
 
   @override
-  State<ColgisScannerApp> createState() => _ColgisScannerAppState();
+  State<WareTrackMiniApp> createState() => _WareTrackMiniAppState();
 }
 
 /// How often the trial build re-checks the gate while the app is sitting
@@ -302,7 +302,7 @@ class _WareTrackMiniAppState extends State<WareTrackMiniApp>
               // resolved at all, the user does not get in. That is the same
               // outcome as an expiry, so it reuses the one shared block
               // screen rather than hand-rolling a look-alike — which is how
-              // this branch previously ended up with an アプリを閉じる button
+              // this branch previously ended up with a Close App button
               // that only retried verification instead of exiting.
               home: _isTrialBuild
                   ? const TrialExpiredPage()
@@ -311,13 +311,13 @@ class _WareTrackMiniAppState extends State<WareTrackMiniApp>
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text(
-                              '無料トライアル期間が終了しました。引き続きアプリをご利用いただくには、お問い合わせください。',
-                            ),
+                            Text(AppLocalizations.of(context).trialExpiredMessage),
                             const SizedBox(height: 16),
                             FilledButton(
                               onPressed: _retryDeviceVerification,
-                              child: const Text('アプリを閉じる'),
+                              child: Text(
+                                AppLocalizations.of(context).closeAppButton,
+                              ),
                             ),
                           ],
                         ),

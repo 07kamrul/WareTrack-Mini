@@ -4,7 +4,8 @@ import 'package:excel/excel.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:waretrack_mini/core/services/export_file_service.dart';
 import 'package:waretrack_mini/core/utils/app_settings.dart';
-import 'package:waretrack_mini/core/utils/localization/app_localizations_ja.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations_bn.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations_en.dart';
 
 void main() {
   group('ExportFileService', () {
@@ -12,14 +13,14 @@ void main() {
 
     test('starts with the column header row without a file-name banner', () {
       final bytes = service.buildWorkbookBytes(
-        menuName: '入荷検品',
+        menuName: 'Receiving',
         slipNumber: '12e',
-        language: AppLanguage.japanese,
+        language: AppLanguage.english,
         items: const <ExportInspectionItem>[],
       );
 
       final workbook = Excel.decodeBytes(bytes);
-      final l10n = AppLocalizationsJa();
+      final l10n = AppLocalizationsEn();
       final sheet = workbook[l10n.inspectionList];
 
       // The sheet must start directly with the column header row — no
@@ -40,9 +41,9 @@ void main() {
 
     test('styles the header light-blue/bold/centered and centers data', () {
       final bytes = service.buildWorkbookBytes(
-        menuName: '入荷検品',
+        menuName: 'Receiving',
         slipNumber: 'S1',
-        language: AppLanguage.japanese,
+        language: AppLanguage.english,
         items: <ExportInspectionItem>[
           ExportInspectionItem(
             slipNumber: 'S1',
@@ -55,7 +56,7 @@ void main() {
       );
 
       final workbook = Excel.decodeBytes(bytes);
-      final l10n = AppLocalizationsJa();
+      final l10n = AppLocalizationsEn();
       final sheet = workbook[l10n.inspectionList];
 
       // Header look: bold, light-blue background, black text. Center alignment
@@ -69,9 +70,9 @@ void main() {
 
     test('exports details in the same order they are displayed', () {
       final bytes = service.buildWorkbookBytes(
-        menuName: '入荷検品',
+        menuName: 'Receiving',
         slipNumber: 'SLIP-9001',
-        language: AppLanguage.english,
+        language: AppLanguage.bangla,
         items: <ExportInspectionItem>[
           ExportInspectionItem(
             slipNumber: 'SLIP-9001',
@@ -91,67 +92,67 @@ void main() {
       );
 
       final workbook = Excel.decodeBytes(bytes);
-      final sheet = workbook[AppLocalizationsJa().inspectionList];
+      final sheet = workbook[AppLocalizationsBn().inspectionList];
 
       expect((sheet.row(1)[1]?.value as TextCellValue).value.text, 'LATEST');
       expect((sheet.row(2)[1]?.value as TextCellValue).value.text, 'OLDER');
     });
 
-    test('uses Japanese menu name and order number for order-based menus', () {
+    test('uses the menu name and order number for order-based menus', () {
       final completedAt = DateTime(2026, 6, 29, 13, 52, 50);
 
       expect(
         service.buildFileName(
-          fileNamePrefix: '入荷検品',
+          fileNamePrefix: 'Receiving',
           slipNumber: '123456',
           completedAt: completedAt,
           saveFormat: SaveFormat.csv,
         ),
-        '入荷検品_123456_20260629135250.csv',
+        'Receiving_123456_20260629135250.csv',
       );
       expect(
         service.buildFileName(
-          fileNamePrefix: '出荷検品',
+          fileNamePrefix: 'Shipping',
           slipNumber: '123456',
           completedAt: completedAt,
           saveFormat: SaveFormat.csv,
         ),
-        '出荷検品_123456_20260629135250.csv',
+        'Shipping_123456_20260629135250.csv',
       );
     });
 
     test(
-      'shelf-storage menus use the Japanese menu name and timestamp only once',
+      'shelf-storage menus use the menu name and timestamp only once',
       () {
         const service = ExportFileService();
         final completedAt = DateTime(2026, 6, 29, 13, 52, 50);
 
         expect(
           service.buildFileName(
-            fileNamePrefix: '棚入れ',
-            slipNumber: '棚入れ20260629135250',
+            fileNamePrefix: 'ShelfPlacement',
+            slipNumber: 'ShelfPlacement20260629135250',
             completedAt: completedAt,
             saveFormat: SaveFormat.csv,
             fileNameFromSlip: true,
           ),
-          '棚入れ20260629135250.csv',
+          'ShelfPlacement20260629135250.csv',
         );
         expect(
           service.buildFileName(
-            fileNamePrefix: '棚卸',
-            slipNumber: '棚卸20260629135250',
+            fileNamePrefix: 'Stocktaking',
+            slipNumber: 'Stocktaking20260629135250',
             completedAt: completedAt,
             saveFormat: SaveFormat.csv,
             fileNameFromSlip: true,
           ),
-          '棚卸20260629135250.csv',
+          'Stocktaking20260629135250.csv',
         );
       },
     );
 
     test('builds CSV with localized headers and escaped saved values', () {
       final bytes = service.buildDelimitedBytes(
-        language: AppLanguage.japanese,
+        language: AppLanguage.english,
         saveFormat: SaveFormat.csv,
         items: <ExportInspectionItem>[
           ExportInspectionItem(
@@ -167,17 +168,17 @@ void main() {
       expect(bytes.take(3), orderedEquals(<int>[0xEF, 0xBB, 0xBF]));
       expect(
         utf8.decode(bytes),
-        '伝票番号,商品コード,数量,日時,ユーザーID\r\n'
+        'Slip Number,Product Code,Quantity,Date/Time,User ID\r\n'
         'SLIP-9001,"CODE,""001""",2,202601020304,u1\r\n',
       );
     });
 
     test('builds stocking CSV with shelf and barcode headers', () {
       final bytes = service.buildDelimitedBytes(
-        language: AppLanguage.japanese,
+        language: AppLanguage.english,
         saveFormat: SaveFormat.csv,
-        firstColumnLabel: '棚番号',
-        productCodeColumnLabel: 'バーコード/QR',
+        firstColumnLabel: 'Shelf Number',
+        productCodeColumnLabel: 'Barcode / QR',
         items: const <ExportInspectionItem>[
           ExportInspectionItem(
             slipNumber: 'abc',
@@ -191,15 +192,15 @@ void main() {
 
       expect(
         utf8.decode(bytes),
-        '棚番号,バーコード/QR,数量,日時,ユーザーID\r\n'
+        'Shelf Number,Barcode / QR,Quantity,Date/Time,User ID\r\n'
         'abc,123,2,202601020304,user-007\r\n',
       );
     });
 
     test('builds email attachment arguments with trimmed recipient', () {
       const result = ExportFileResult(
-        fileName: '入荷検品49100418503_260102030405.csv',
-        filePath: '/tmp/入荷検品49100418503_260102030405.csv',
+        fileName: 'Receiving49100418503_260102030405.csv',
+        filePath: '/tmp/Receiving49100418503_260102030405.csv',
         mimeType: 'text/csv',
         contentUri: 'content://downloads/1',
       );
@@ -215,8 +216,8 @@ void main() {
           'contentUri': result.contentUri,
           'emailAddress': 'receiver@example.com',
           'mimeType': 'text/csv',
-          'subject': 'スマートフォンハンディ エクスポートファイル',
-          'body': 'エクスポートファイルを添付しましたので、ご確認ください。',
+          'subject': 'Smartphone Handy Export File',
+          'body': 'The export file is attached. Please review it.',
         },
       );
     });

@@ -33,7 +33,7 @@ void main() {
 
     test('reuses the stocking registration flow', () {
       // Inventory inherits every behaviour — including the input reset — from
-      // StockingBloc, so the same guarantees apply to the 棚卸 menu.
+      // StockingBloc, so the same guarantees apply to the Stocktaking menu.
       expect(bloc, isA<StockingBloc>());
     });
 

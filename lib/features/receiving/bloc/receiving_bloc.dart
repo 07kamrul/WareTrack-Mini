@@ -308,7 +308,7 @@ final class ReceivingBloc extends BaseBloc<ReceivingEvent, ReceivingState> {
           messageToken: state.messageToken + 1,
         ),
       );
-      // Remember the quantity this product had before the scan so 1scan戻す
+      // Remember the quantity this product had before the scan so "undo 1 scan"
       // can restore it exactly (0 when the product was not in the list yet).
       // Only the most recent action is undoable: each new scan replaces the
       // previous undo entry.

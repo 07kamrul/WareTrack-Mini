@@ -24,8 +24,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(),
-        locale: const Locale('ja'),
-        supportedLocales: const [Locale('ja')],
+        locale: const Locale('en'),
+        supportedLocales: const [Locale('en'), Locale('bn')],
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -39,10 +39,13 @@ void main() {
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 
-    expect(findVisibleText('スキャンしたファイルを保存しますか？'), findsOneWidget);
+    expect(
+      findVisibleText('Go back without saving the scanned data?'),
+      findsOneWidget,
+    );
 
-    final noFinder = find.widgetWithText(OutlinedButton, 'いいえ');
-    final yesFinder = find.widgetWithText(FilledButton, 'はい');
+    final noFinder = find.widgetWithText(OutlinedButton, 'No');
+    final yesFinder = find.widgetWithText(FilledButton, 'Yes');
 
     expect(noFinder, findsOneWidget);
     expect(yesFinder, findsOneWidget);
@@ -71,8 +74,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(),
-        locale: const Locale('ja'),
-        supportedLocales: const [Locale('ja')],
+        locale: const Locale('en'),
+        supportedLocales: const [Locale('en'), Locale('bn')],
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -86,10 +89,13 @@ void main() {
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 
-    expect(findVisibleText('選択した行を削除します。よろしいですか？'), findsOneWidget);
+    expect(
+      findVisibleText('The selected row will be deleted. Are you sure?'),
+      findsOneWidget,
+    );
 
-    final noFinder = find.widgetWithText(FilledButton, 'いいえ');
-    final yesFinder = find.widgetWithText(FilledButton, 'はい');
+    final noFinder = find.widgetWithText(FilledButton, 'No');
+    final yesFinder = find.widgetWithText(FilledButton, 'Yes');
     final noStyle = tester.widget<FilledButton>(noFinder).style!;
     final yesStyle = tester.widget<FilledButton>(yesFinder).style!;
 
@@ -127,7 +133,7 @@ class _DeleteDialogLauncher extends StatelessWidget {
         child: TextButton(
           onPressed: () => showScanConfirmationDialog(
             context,
-            message: '選択した行を削除します。よろしいですか？',
+            message: 'The selected row will be deleted. Are you sure?',
             messageStyle: const TextStyle(color: Colors.red),
             cancelBackgroundColor: const Color(0xFFF1D4B3),
             cancelForegroundColor: Colors.black,

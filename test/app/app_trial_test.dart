@@ -269,10 +269,10 @@ void main() {
 
       expect(find.byType(TrialExpiredPage), findsOneWidget);
       expect(find.byType(HomePage), findsNothing);
-      // The old hand-rolled copy of this screen put an アプリを閉じる label on a
+      // The old hand-rolled copy of this screen put a Close App label on a
       // button that only retried verification. There must be exactly one
       // close button, and it belongs to the shared screen.
-      expect(find.text('再試行'), findsNothing);
+      expect(find.text('Retry'), findsNothing);
     },
     skip: _skipNonTrialBuild,
   );

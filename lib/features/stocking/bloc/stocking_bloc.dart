@@ -151,7 +151,7 @@ class StockingBloc extends BaseBloc<StockingEvent, StockingState> {
     bool fromManualInput = false,
   }) async {
     // Changing the shelf keeps the pending undo entry: it carries its own
-    // shelf number, so 1scan戻す still targets the last scanned product.
+    // shelf number, so "undo 1 scan" still targets the last scanned product.
     _resetProductSoundPattern();
 
     if (!_isValidShelfNumber(value)) {
@@ -241,7 +241,7 @@ class StockingBloc extends BaseBloc<StockingEvent, StockingState> {
         shelfNumber,
         persistedShelfItems,
       );
-      // Latest scan always shows at the top of the list, same as 入庫/出庫.
+      // Latest scan always shows at the top of the list, same as receiving/shipping.
       final updatedSessionItems = [
         updatedItem,
         for (final item in mergedSessionItems)
@@ -269,7 +269,7 @@ class StockingBloc extends BaseBloc<StockingEvent, StockingState> {
               : null,
         ),
       );
-      // Remember the quantity this product had before the scan so 1scan戻す
+      // Remember the quantity this product had before the scan so "undo 1 scan"
       // can restore it exactly (0 when the product was not in the list yet).
       // Only the most recent action is undoable: each new scan replaces the
       // previous undo entry.

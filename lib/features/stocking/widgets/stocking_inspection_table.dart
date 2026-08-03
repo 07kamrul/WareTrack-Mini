@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/data/models/receiving_inspection_item.dart';
 
-/// Inspection table for 棚入れ (Shelf Storage).
+/// Inspection table for Shelf Placement (Shelf Storage).
 ///
-/// Shows columns: 修正 | 棚番号 | バーコード/QR | 検品数
+/// Shows columns: Correct | Shelf Number | Barcode/QR | Inspection Quantity
 /// The "slip number" field in [ReceivingInspectionItem] holds the shelf number.
 class StockingInspectionTable extends StatelessWidget {
   const StockingInspectionTable({
@@ -36,6 +37,7 @@ class StockingInspectionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final borderColor = theme.colorScheme.outlineVariant;
+    final l10n = AppLocalizations.of(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -54,10 +56,10 @@ class StockingInspectionTable extends StatelessWidget {
                   decoration: BoxDecoration(color: theme.colorScheme.primary),
                   children: [
                     if (showResetColumn)
-                      _HeaderCell(label: '修正', metrics: metrics),
-                    _HeaderCell(label: '棚番号', metrics: metrics),
-                    _HeaderCell(label: 'バーコード/QR', metrics: metrics),
-                    _HeaderCell(label: '検品数', metrics: metrics),
+                      _HeaderCell(label: l10n.inspectionReset, metrics: metrics),
+                    _HeaderCell(label: l10n.shelfNumberLabel, metrics: metrics),
+                    _HeaderCell(label: l10n.barcodeQr, metrics: metrics),
+                    _HeaderCell(label: l10n.inspectionQuantity, metrics: metrics),
                   ],
                 ),
                 for (final item in items)
@@ -74,7 +76,7 @@ class StockingInspectionTable extends StatelessWidget {
                         _ActionCell(
                           selected: false,
                           onPressed: () => onReset?.call(item),
-                          label: '選択',
+                          label: l10n.select,
                           metrics: metrics,
                           backgroundColor: const Color(0xFF006D77),
                         ),
@@ -101,7 +103,7 @@ class StockingInspectionTable extends StatelessWidget {
                     bottom: BorderSide(color: borderColor),
                   ),
                 ),
-                child: const _EmptyCell(label: '検品データありません。'),
+                child: _EmptyCell(label: l10n.noInspectionData),
               ),
           ],
         );

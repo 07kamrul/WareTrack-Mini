@@ -550,7 +550,7 @@ void main() {
         (state) => state.items.any((item) => item.barcode == '456'),
       );
 
-      // 1scan戻す drops the last scanned row to quantity 0 in the session
+      // "undo 1 scan" drops the last scanned row to quantity 0 in the session
       // AND in the persisted scan list; the row itself stays.
       bloc.add(const StockingUndoRequested());
       await bloc.stream.firstWhere(

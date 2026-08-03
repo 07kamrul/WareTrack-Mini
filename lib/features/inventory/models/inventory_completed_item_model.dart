@@ -1,6 +1,6 @@
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 
-/// Completed work item model for 棚卸 (Inventory).
+/// Completed work item model for Stocktaking (Inventory).
 final class InventoryCompletedItemModel implements CompletedItemRecord {
   const InventoryCompletedItemModel({
     required this.slipNumber,

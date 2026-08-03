@@ -1,6 +1,6 @@
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 
-/// Completed work item model for 出荷検品 (Shipping).
+/// Completed work item model for Shipping.
 final class ShippingCompletedItemModel implements CompletedItemRecord {
   const ShippingCompletedItemModel({
     required this.slipNumber,

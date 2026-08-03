@@ -1,7 +1,7 @@
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 import 'package:waretrack_mini/core/models/inspection_work_type.dart';
 
-/// Completed work order model for 入荷検品 (Receiving).
+/// Completed work order model for Receiving.
 final class ReceivingCompletedOrderModel implements CompletedOrderRecord {
   const ReceivingCompletedOrderModel({
     required this.slipNumber,

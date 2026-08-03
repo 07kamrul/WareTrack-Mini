@@ -12,8 +12,8 @@ void main() {
   }) {
     return MaterialApp(
       navigatorKey: navigatorKey,
-      locale: const Locale('ja'),
-      supportedLocales: const [Locale('ja')],
+      locale: const Locale('en'),
+      supportedLocales: const [Locale('en'), Locale('bn')],
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -30,7 +30,7 @@ void main() {
 
     final context = tester.element(find.byType(TrialExpiredPage));
     final l10n = AppLocalizations.of(context);
-    expect(find.text(l10n.trialExpiredMessageJa), findsOneWidget);
+    expect(find.text(l10n.trialExpiredMessage), findsOneWidget);
   });
 
   testWidgets('tapping the close button invokes the close callback', (

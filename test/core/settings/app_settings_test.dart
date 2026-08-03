@@ -7,20 +7,20 @@ import 'package:waretrack_mini/core/services/storage_service.dart';
 
 void main() {
   group('AppSettingsRepository', () {
-    test('defaults to Japanese without saving', () async {
+    test('defaults to English without saving', () async {
       final storage = _FakeLocalStorage();
       final repository = AppSettingsRepository(storage);
 
       final settings = await repository.load();
 
-      expect(settings.language, AppLanguage.japanese);
+      expect(settings.language, AppLanguage.english);
       expect(storage.values[AppSettingsRepository.storageKey], isNull);
     });
 
-    test('removes legacy language and theme preferences', () async {
+    test('removes legacy theme preferences but keeps the saved language', () async {
       final storage = _FakeLocalStorage({
         AppSettingsRepository.storageKey: jsonEncode({
-          'language': 'en',
+          'language': 'bn',
           'hasSelectedLanguage': true,
           'themeMode': 'dark',
         }),
@@ -29,13 +29,13 @@ void main() {
 
       final settings = await repository.load();
 
-      expect(settings.language, AppLanguage.japanese);
+      expect(settings.language, AppLanguage.bangla);
       expect(_savedSettings(storage), isNot(contains('themeMode')));
-      expect(_savedSettings(storage), isNot(contains('language')));
       expect(_savedSettings(storage), isNot(contains('hasSelectedLanguage')));
+      expect(_savedSettings(storage)['language'], 'bn');
     });
 
-    test('controller locale is always Japanese', () async {
+    test('controller locale defaults to English', () async {
       final storage = _FakeLocalStorage();
       final repository = AppSettingsRepository(storage);
       final settings = await repository.load();
@@ -44,7 +44,22 @@ void main() {
         initialSettings: settings,
       );
 
-      expect(controller.locale, const Locale('ja'));
+      expect(controller.locale, const Locale('en'));
+    });
+
+    test('controller locale switches to Bangla after setLanguage', () async {
+      final storage = _FakeLocalStorage();
+      final repository = AppSettingsRepository(storage);
+      final settings = await repository.load();
+      final controller = AppSettingsController(
+        repository: repository,
+        initialSettings: settings,
+      );
+
+      await controller.setLanguage(AppLanguage.bangla);
+
+      expect(controller.locale, const Locale('bn'));
+      expect(_savedSettings(storage)['language'], 'bn');
     });
   });
 }

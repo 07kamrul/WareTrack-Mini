@@ -48,7 +48,7 @@ class MainMenuPage extends StatelessWidget {
     ),
   ];
 
-  /// 棚入れ (shelf placement) is only available on demo440; hide it for
+  /// Shelf placement is only available on demo440; hide it for
   /// every other API environment.
   static List<MainMenuItem> get _visibleItems => _items
       .where(

@@ -10,7 +10,9 @@ import 'package:waretrack_mini/features/settings/pages/settings_page.dart';
 import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 
 void main() {
-  testWidgets('shows only Japanese save and transfer settings', (tester) async {
+  testWidgets('shows save/transfer settings and the language selector', (
+    tester,
+  ) async {
     final storage = _FakeLocalStorage();
     final repository = AppSettingsRepository(storage);
     final controller = AppSettingsController(
@@ -24,8 +26,8 @@ void main() {
 
     await tester.pumpWidget(
       const MaterialApp(
-        locale: Locale('ja'),
-        supportedLocales: [Locale('ja')],
+        locale: Locale('en'),
+        supportedLocales: [Locale('en'), Locale('bn')],
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -37,49 +39,49 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('保存・送信'), findsOneWidget);
-    expect(find.text('保存形式'), findsOneWidget);
+    expect(find.text('Language'), findsOneWidget);
+    expect(find.text('English'), findsOneWidget);
+    expect(find.text('Bangla'), findsOneWidget);
+    expect(find.text('Save & Transfer'), findsOneWidget);
+    expect(find.text('Save Format'), findsOneWidget);
     expect(find.text('CSV'), findsOneWidget);
     expect(find.text('Excel'), findsOneWidget);
-    expect(find.text('送信先設定'), findsOneWidget);
-    expect(find.text('メールアドレス'), findsOneWidget);
-    expect(find.text('設定'), findsOneWidget);
-    expect(find.text('保存'), findsNothing);
-    expect(find.text('メールアドレス設定完了しました。'), findsNothing);
+    expect(find.text('Transfer Destination Settings'), findsOneWidget);
+    expect(find.text('Email Address'), findsOneWidget);
+    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Save'), findsNothing);
+    expect(find.text('Settings saved.'), findsNothing);
 
     await tester.drag(find.byType(ListView), const Offset(0, -600));
     await tester.pumpAndSettle();
-    expect(find.text('アプリ情報'), findsOneWidget);
-    expect(find.text('アプリ名'), findsOneWidget);
+    expect(find.text('App Information'), findsOneWidget);
+    expect(find.text('App Name'), findsOneWidget);
     expect(find.text(AppBuildConfig.apiPayloadName), findsOneWidget);
-    expect(find.text('アプリバージョン'), findsOneWidget);
+    expect(find.text('App Version'), findsOneWidget);
     expect(find.text(AppBuildConfig.appVersion), findsOneWidget);
-    expect(find.text('言語'), findsNothing);
-    expect(find.text('日本語'), findsNothing);
-    expect(find.text('英語'), findsNothing);
-    expect(find.text('テーマ'), findsNothing);
-    expect(find.text('ライト'), findsNothing);
-    expect(find.text('ダーク'), findsNothing);
-    expect(find.text('現在のテーマ'), findsNothing);
+    expect(find.text('Theme'), findsNothing);
+    expect(find.text('Light'), findsNothing);
+    expect(find.text('Dark'), findsNothing);
+    expect(find.text('Current Theme'), findsNothing);
 
-    // The Trial build hides the 承認コード確認 card entirely — Standard
-    // keeps it, including the confirm flow below.
+    // The Trial build hides the Approval Code Verification card entirely —
+    // Standard keeps it, including the confirm flow below.
     if (AppBuildConfig.isTrial) {
-      expect(find.text('承認コード確認'), findsNothing);
-      expect(find.text('承認コード'), findsNothing);
+      expect(find.text('Approval Code Verification'), findsNothing);
+      expect(find.text('Approval Code'), findsNothing);
       return;
     }
 
-    expect(find.text('承認コード確認'), findsOneWidget);
-    expect(find.text('承認コード'), findsOneWidget);
-    expect(find.text('確認'), findsOneWidget);
+    expect(find.text('Approval Code Verification'), findsOneWidget);
+    expect(find.text('Approval Code'), findsOneWidget);
+    expect(find.text('Confirm'), findsOneWidget);
 
-    await tester.ensureVisible(find.text('確認'));
+    await tester.ensureVisible(find.text('Confirm'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('確認'));
+    await tester.tap(find.text('Confirm'));
     await tester.pump();
 
-    expect(find.text('承認コードを入力してください。'), findsOneWidget);
+    expect(find.text('Please enter the approval code.'), findsOneWidget);
   });
 
   testWidgets(
@@ -98,8 +100,8 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          locale: Locale('ja'),
-          supportedLocales: [Locale('ja')],
+          locale: Locale('en'),
+          supportedLocales: [Locale('en'), Locale('bn')],
           localizationsDelegates: [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -111,20 +113,20 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('メールアドレス設定完了しました。'), findsNothing);
+      expect(find.text('Settings saved.'), findsNothing);
 
       await tester.enterText(
         find.byWidgetPredicate(
           (widget) =>
-              widget is TextField && widget.decoration?.labelText == 'メールアドレス',
+              widget is TextField &&
+              widget.decoration?.labelText == 'Email Address',
         ),
         'receiver@example.com',
       );
-      await tester.tap(find.text('設定'));
+      await tester.tap(find.text('Settings'));
       await tester.pump();
 
-      expect(find.text('メールアドレス設定完了しました。'), findsOneWidget);
-      expect(find.text('設定を保存しました'), findsNothing);
+      expect(find.text('Settings saved.'), findsOneWidget);
       expect(find.byType(SnackBar), findsNothing);
       expect(controller.settings.transfer.emailAddress, 'receiver@example.com');
     },
@@ -146,8 +148,8 @@ void main() {
 
     await tester.pumpWidget(
       const MaterialApp(
-        locale: Locale('ja'),
-        supportedLocales: [Locale('ja')],
+        locale: Locale('en'),
+        supportedLocales: [Locale('en'), Locale('bn')],
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -159,14 +161,14 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('設定'));
+    await tester.tap(find.text('Settings'));
     await tester.pump();
 
-    expect(find.text('メールアドレスを入力してください。'), findsOneWidget);
-    expect(find.text('メールアドレス設定完了しました。'), findsNothing);
+    expect(find.text('Please enter an email address.'), findsOneWidget);
+    expect(find.text('Settings saved.'), findsNothing);
     expect(find.byType(SnackBar), findsNothing);
     expect(controller.settings.transfer.emailAddress, isEmpty);
-    expect(find.text('設定'), findsOneWidget);
+    expect(find.text('Settings'), findsOneWidget);
   });
 }
 

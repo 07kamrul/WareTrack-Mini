@@ -70,7 +70,7 @@ void main() {
 
     expect(find.byType(HomePage), findsOneWidget);
     expect(find.text('1'), findsOneWidget);
-    expect(find.text('プロフィール'), findsNothing);
+    expect(find.text('Profile'), findsNothing);
 
     await tester.tap(find.text('1'));
     await tester.pumpAndSettle();
@@ -184,8 +184,8 @@ void main() {
     await tester.pumpWidget(const WareTrackMiniApp());
     await tester.pumpAndSettle();
 
-    await tester.ensureVisible(find.text('初期設定'));
-    await tester.tap(find.text('初期設定'));
+    await tester.ensureVisible(find.text('Initial Setup'));
+    await tester.tap(find.text('Initial Setup'));
     await tester.pumpAndSettle();
 
     expect(find.byType(SettingsPage), findsOneWidget);
@@ -193,7 +193,7 @@ void main() {
     const emailAddress = 'receiver@example.com';
     final emailField = find.byWidgetPredicate(
       (widget) =>
-          widget is TextField && widget.decoration?.labelText == 'メールアドレス',
+          widget is TextField && widget.decoration?.labelText == 'Email Address',
     );
     await tester.scrollUntilVisible(
       emailField,
@@ -203,7 +203,7 @@ void main() {
     await tester.enterText(emailField, emailAddress);
     await tester.pumpAndSettle();
 
-    final saveEmailButton = find.widgetWithText(FilledButton, '設定');
+    final saveEmailButton = find.widgetWithText(FilledButton, 'Settings');
     await tester.ensureVisible(saveEmailButton);
     await tester.tap(saveEmailButton);
     await tester.pumpAndSettle();

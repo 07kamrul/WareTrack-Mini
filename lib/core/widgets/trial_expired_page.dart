@@ -23,7 +23,7 @@ class TrialExpiredPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    l10n.trialExpiredMessageJa,
+                    l10n.trialExpiredMessage,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),

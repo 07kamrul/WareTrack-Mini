@@ -17,7 +17,7 @@ import 'package:waretrack_mini/features/stocking/bloc/stocking_event.dart';
 import 'package:waretrack_mini/features/stocking/bloc/stocking_state.dart';
 import 'package:waretrack_mini/features/stocking/widgets/stocking_inspection_table.dart';
 
-/// 棚入れ (Shelf Storage) scan screen.
+/// Shelf Placement (Shelf Storage) scan screen.
 ///
 /// Pure UI layer — dispatches [StockingEvent]s and renders [StockingState].
 /// All business logic lives in [StockingBloc].
@@ -123,7 +123,7 @@ class _StockingScanPageState extends State<StockingScanPage> {
                                   const StockingProductChangedNoticeCleared(),
                                 ),
                             leadingAction: _ScanSideButton(
-                              label: '棚番号',
+                              label: l10n.shelfNumberLabel,
                               height: metrics.buttonHeight + 10,
                               isSelected:
                                   state.selectedMode ==
@@ -135,7 +135,7 @@ class _StockingScanPageState extends State<StockingScanPage> {
                               ),
                             ),
                             trailingAction: _ScanSideButton(
-                              label: '商品',
+                              label: l10n.merchandise,
                               height: metrics.buttonHeight + 10,
                               isSelected:
                                   state.selectedMode ==
@@ -270,7 +270,7 @@ class _StockingScanPageState extends State<StockingScanPage> {
     }
 
     // A successful manual input bumps [clearInputToken]. Clear the code field
-    // (this also covers 棚番号 mode, where the typed value never enters the
+    // (this also covers shelf-number mode, where the typed value never enters the
     // BLoC state), reset the quantity to its default and restore focus so the
     // next value can be entered without any extra tap. Scans and validation
     // failures never bump this token, so they leave the field untouched.
@@ -356,15 +356,15 @@ class _StockingScanPageState extends State<StockingScanPage> {
   ) {
     final l10n = AppLocalizations.of(context);
     return switch (message) {
-      StockingMessage.shelfNumberRequired => '先に棚番号をスキャンしてください。',
+      StockingMessage.shelfNumberRequired => l10n.scanShelfNumberFirst,
       StockingMessage.barcodeRequired => l10n.barcodeRequired,
       StockingMessage.quantityRequired => l10n.quantityRequired,
-      StockingMessage.invalidShelfNumber => '棚番号が正しくありません。',
+      StockingMessage.invalidShelfNumber => l10n.invalidShelfNumberEntry,
       StockingMessage.invalidBarcode => l10n.invalidBarcode,
       StockingMessage.noScanDataToUndo => l10n.noScanDataToUndo,
       StockingMessage.noScanData => l10n.noInspectionData,
-      StockingMessage.incompleteRow => '未完了の棚入れデータがあります。',
-      StockingMessage.saveFailed => '棚入れデータを保存できませんでした。',
+      StockingMessage.incompleteRow => l10n.incompleteShelfPlacementData,
+      StockingMessage.saveFailed => l10n.shelfPlacementSaveFailed,
       _ => '',
     };
   }
@@ -401,17 +401,17 @@ class _StockingProductInput extends StatelessWidget {
   final bool isModeSwitching;
   final bool isLoading;
 
-  /// Whether the field is in 棚番号 (shelf number) mode.
+  /// Whether the field is in shelf-number mode.
   ///
   /// In this mode the code field is restricted to the shelf-number character
-  /// set; in 商品 (product) mode it is left unrestricted so product barcodes
+  /// set; in product mode it is left unrestricted so product barcodes
   /// and QR codes (which use `#`, `~`, `*`, …) still scan correctly.
   final bool isShelfNumberMode;
 
-  /// Whether the 数量 (quantity) label and field are shown.
+  /// Whether the quantity label and field are shown.
   ///
-  /// Hidden in 棚番号 (shelf number) mode so the section occupies no space;
-  /// shown in 商品 (product) mode.
+  /// Hidden in shelf-number mode so the section occupies no space;
+  /// shown in product mode.
   final bool showQuantity;
   final bool showActionButtons;
   final VoidCallback onSubmit;
@@ -718,8 +718,8 @@ class _StockingListCard extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     latestShelfNumber.isNotEmpty
-                        ? '棚判定：$latestShelfNumber'
-                        : '棚判定：',
+                        ? '${l10n.shelfMatchLabel} $latestShelfNumber'
+                        : l10n.shelfMatchLabel,
                     textAlign: TextAlign.center,
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w900,
@@ -914,12 +914,12 @@ class _ScanSideButton extends StatelessWidget {
   }
 }
 
-// ── Scanner option for 棚入れ ─────────────────────────────────────────────────
+// ── Scanner option for Shelf Placement ────────────────────────────────────
 
 const ScannerOption _stockingScannerOption = ScannerOption(
   key: 'stocking',
-  title: '棚入れ',
-  subtitle: '棚入れバーコード検品',
+  title: 'Shelf Placement',
+  subtitle: 'Shelf Placement Barcode Inspection',
   formats: [
     ScannerFormat.qrCode,
     ScannerFormat.code39,

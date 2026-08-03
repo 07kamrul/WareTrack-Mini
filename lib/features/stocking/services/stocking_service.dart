@@ -8,7 +8,7 @@ import 'package:waretrack_mini/data/models/receiving_inspection_item.dart';
 import 'package:waretrack_mini/features/stocking/models/stocking_completed_item_model.dart';
 import 'package:waretrack_mini/features/stocking/models/stocking_completed_order_model.dart';
 
-/// Stocking service (棚入れ) that delegates to a ReceivingRepository
+/// Stocking service (Shelf Placement) that delegates to a ReceivingRepository
 /// configured with InspectionWorkType.stocking.
 /// This mirrors ShippingService to reuse the shared repository infrastructure.
 final class StockingService implements ReceivingRepository {
