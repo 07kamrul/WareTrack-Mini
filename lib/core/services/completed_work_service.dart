@@ -1,4 +1,3 @@
-import 'package:waretrack_mini/core/api_services/send_mail_service.dart';
 import 'package:waretrack_mini/core/constants/verification_storage_keys.dart';
 import 'package:waretrack_mini/core/database/app_database.dart';
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
@@ -11,18 +10,15 @@ final class CompletedWorkService {
   const CompletedWorkService({
     required AppDatabase database,
     required ExportFileService exportFileService,
-    required SendMailService sendMailService,
     required AppSettingsController settingsController,
     required LocalStorage localStorage,
   }) : _database = database,
        _exportFileService = exportFileService,
-       _sendMailService = sendMailService,
        _settingsController = settingsController,
        _localStorage = localStorage;
 
   final AppDatabase _database;
   final ExportFileService _exportFileService;
-  final SendMailService _sendMailService;
   final AppSettingsController _settingsController;
   final LocalStorage _localStorage;
 
@@ -64,7 +60,6 @@ final class CompletedWorkService {
     return _database.deleteCompletedWork(slipNumber, workType: menuType);
   }
 
-  /// Persists the "sent" status for a completed work after a successful send.
   Future<void> markWorkSent(InspectionWorkType menuType, String slipNumber) {
     return _database.markCompletedWorkSent(slipNumber, workType: menuType);
   }
@@ -91,18 +86,6 @@ final class CompletedWorkService {
       firstColumnLabel: _usesShelfStorage(menuType) ? l10n.shelfNumberLabel : null,
       productCodeColumnLabel: _usesShelfStorage(menuType) ? l10n.barcodeQr : null,
       fileNameFromSlip: _usesShelfStorage(menuType),
-    );
-  }
-
-  Future<void> validateAuthentication() {
-    return _sendMailService.validateAuthentication();
-  }
-
-  Future<void> send(ExportFileResult result) {
-    return _sendMailService.send(
-      email: emailAddress,
-      selectedFormat: _selectedSendFormat.name,
-      exportResult: result,
     );
   }
 

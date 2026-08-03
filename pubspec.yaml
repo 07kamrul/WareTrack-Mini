@@ -27,7 +27,6 @@ dependencies:
   path: ^1.9.1
   excel: ^4.0.6
   path_provider: ^2.1.5
-  http: ^1.6.0
   android_id: ^0.4.0
   package_info_plus: ^10.1.0
   open_filex: ^4.7.0

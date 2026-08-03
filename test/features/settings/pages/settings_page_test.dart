@@ -63,25 +63,6 @@ void main() {
     expect(find.text('Light'), findsNothing);
     expect(find.text('Dark'), findsNothing);
     expect(find.text('Current Theme'), findsNothing);
-
-    // The Trial build hides the Approval Code Verification card entirely —
-    // Standard keeps it, including the confirm flow below.
-    if (AppBuildConfig.isTrial) {
-      expect(find.text('Approval Code Verification'), findsNothing);
-      expect(find.text('Approval Code'), findsNothing);
-      return;
-    }
-
-    expect(find.text('Approval Code Verification'), findsOneWidget);
-    expect(find.text('Approval Code'), findsOneWidget);
-    expect(find.text('Confirm'), findsOneWidget);
-
-    await tester.ensureVisible(find.text('Confirm'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Confirm'));
-    await tester.pump();
-
-    expect(find.text('Please enter the approval code.'), findsOneWidget);
   });
 
   testWidgets(

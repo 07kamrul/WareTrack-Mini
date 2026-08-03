@@ -7,7 +7,6 @@ import 'package:waretrack_mini/core/widgets/primary_app_bar.dart';
 import 'package:waretrack_mini/features/settings/bloc/settings_bloc.dart';
 import 'package:waretrack_mini/features/settings/bloc/settings_state.dart';
 import 'package:waretrack_mini/features/settings/widgets/app_info_card.dart';
-import 'package:waretrack_mini/features/settings/widgets/code_verification_setting_card.dart';
 import 'package:waretrack_mini/features/settings/widgets/language_setting_card.dart';
 import 'package:waretrack_mini/features/settings/widgets/save_transfer_setting_card.dart';
 
@@ -71,10 +70,6 @@ class _SettingsView extends StatelessWidget {
                                 onEmailAddressSaved: bloc.setEmailAddress,
                               ),
                               const SizedBox(height: 16),
-                              if (!AppBuildConfig.isTrial) ...[
-                                const CodeVerificationSettingCard(),
-                                const SizedBox(height: 16),
-                              ],
                               AppInfoCard(
                                 appName: AppBuildConfig.apiPayloadName,
                                 appVersion: AppBuildConfig.appVersion,

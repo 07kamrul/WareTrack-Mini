@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:waretrack_mini/core/api_services/api_environment.dart';
-import 'package:waretrack_mini/core/api_services/base_api.dart';
-import 'package:waretrack_mini/core/constants/verification_storage_keys.dart';
-import 'package:waretrack_mini/core/services/app_bindings.dart';
 import 'package:waretrack_mini/core/services/app_router.dart';
 import 'package:waretrack_mini/core/services/manual_service.dart';
-import 'package:waretrack_mini/core/services/storage_service.dart';
 import 'package:waretrack_mini/data/models/scanner_option.dart';
 import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/core/widgets/primary_app_bar.dart';
@@ -48,15 +43,7 @@ class MainMenuPage extends StatelessWidget {
     ),
   ];
 
-  /// Shelf placement is only available on demo440; hide it for
-  /// every other API environment.
-  static List<MainMenuItem> get _visibleItems => _items
-      .where(
-        (item) =>
-            item.action != MainMenuAction.shelfPlacement ||
-            BaseApi.current == ApiEnvironment.demo440,
-      )
-      .toList();
+  static List<MainMenuItem> get _visibleItems => _items;
 
   @override
   Widget build(BuildContext context) {
@@ -69,26 +56,12 @@ class MainMenuPage extends StatelessWidget {
       appBar: PrimaryAppBar(
         title: localizations.mainMenu,
         showBackButton: false,
-        // The manual PDF is offered on demo440, jarocDemo, and every trial
-        // build; the remaining base environments (demo395, jarocClient,
-        // jarocDev, ...) hide the help button entirely.
-        showHelpButton:
-            BaseApi.current == ApiEnvironment.demo440 ||
-            BaseApi.current == ApiEnvironment.jarocDemo ||
-            BaseApi.isTrial,
+        showHelpButton: true,
         onHelpPressed: () => ManualService.openManual(context),
-        leading: BaseApi.isTrial
-            ? const TrialActionButton(label: 'TRIAL')
-            : FutureBuilder<String?>(
-                future: sl<LocalStorage>().readString(kCode),
-                builder: (context, snapshot) {
-                  final code = snapshot.data?.trim() ?? '';
-                  return PrimaryAppBarAction(
-                    icon: Icons.person,
-                    label: code.isEmpty ? '-' : code,
-                  );
-                },
-              ),
+        leading: const PrimaryAppBarAction(
+          icon: Icons.person,
+          label: '-',
+        ),
       ),
       body: SafeArea(
         child: LayoutBuilder(

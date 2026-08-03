@@ -1,17 +1,12 @@
-import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waretrack_mini/core/services/app_bindings.dart';
-import 'package:waretrack_mini/core/api_services/send_mail_service.dart';
-import 'package:waretrack_mini/core/api_services/api_connection_guard.dart';
 import 'package:waretrack_mini/core/services/completed_work_service.dart';
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
 import 'package:waretrack_mini/core/models/inspection_work_type.dart';
 import 'package:waretrack_mini/core/widgets/primary_app_bar.dart';
 import 'package:waretrack_mini/core/widgets/scan_confirmation_dialog.dart';
 import 'package:waretrack_mini/core/widgets/validation_error_dialog.dart';
-import 'package:waretrack_mini/core/widgets/offline_dialog.dart';
 import 'package:waretrack_mini/features/main_menu/widgets/menu_item.dart';
 import 'package:waretrack_mini/features/receiving/bloc/receiving_bloc.dart';
 import 'package:waretrack_mini/features/receiving/pages/receiving_selection_page.dart';
@@ -150,19 +145,12 @@ class _SavedFilesPageState extends State<SavedFilesPage> {
   }
 
   Future<void> _send(CompletedOrderRecord work) async {
-    // Prevent overlapping requests from repeated taps on the Send button.
     if (_isSending) {
       return;
     }
 
     final l10n = AppLocalizations.of(context);
     final isShipping = work.workType == InspectionWorkType.shipping;
-    final emailAddress = _completedWorkService.emailAddress;
-
-    if (emailAddress.isEmpty) {
-      showValidationErrorDialog(context, l10n.emailAddressNotConfigured);
-      return;
-    }
 
     if (isShipping && _shippingService == null) {
       return;
@@ -171,52 +159,22 @@ class _SavedFilesPageState extends State<SavedFilesPage> {
     setState(() => _isSending = true);
     _showSendingDialog();
 
-    // The blocking dialog must be dismissed before any result popup, so the
-    // outcome is recorded here and shown after the loading dialog is hidden.
-    String? resultMessage;
-    var showOffline = false;
+    String resultMessage;
     var success = false;
     try {
-      await _completedWorkService.validateAuthentication();
       final result = await _completedWorkService.exportCompletedWork(
         menuType: work.workType,
         slipNumber: work.slipNumber,
         completedAt: work.completedAt,
       );
-      await _completedWorkService.send(result);
-      // Persist the sent status only after a successful API response.
       await _completedWorkService.markWorkSent(
         work.workType,
         work.slipNumber,
       );
-      resultMessage = l10n.sendMailSuccess;
+      resultMessage = '${l10n.sendMailSuccess} (${result.filePath})';
       success = true;
-    } on MissingDeviceVerificationException {
-      resultMessage = l10n.deviceVerificationNotFound;
-    } on MissingSendMailEmailException {
-      resultMessage = l10n.emailAddressNotConfigured;
-    } on MissingSendMailFileException {
-      resultMessage = l10n.sendMailFileNotFound;
-    } on EmptySendMailFileException {
-      resultMessage = l10n.sendMailFileEmpty;
-    } on SendMailApiException catch (error) {
-      resultMessage = error.message.trim().isNotEmpty
-          ? error.message
-          : l10n.workSendFailed;
-    } on ApiOfflineException {
-      showOffline = true;
-    } catch (error, stackTrace) {
-      if (isApiOfflineError(error)) {
-        showOffline = true;
-      } else {
-        developer.log(
-          'Email export/send failed: $error',
-          name: 'SavedFilesSend',
-          error: error,
-          stackTrace: stackTrace,
-        );
-        resultMessage = l10n.workSendFailed;
-      }
+    } catch (error) {
+      resultMessage = l10n.workSendFailed;
     } finally {
       _dismissSendingDialog();
       if (mounted) {
@@ -228,18 +186,13 @@ class _SavedFilesPageState extends State<SavedFilesPage> {
       return;
     }
 
-    // Refresh so the persisted "sent" icon appears for this order.
     if (success) {
       setState(() {
         _worksFuture = _loadAllCompletedWorks();
       });
     }
 
-    if (showOffline) {
-      showOfflineDialog(context);
-    } else if (resultMessage != null) {
-      showValidationErrorDialog(context, resultMessage);
-    }
+    showValidationErrorDialog(context, resultMessage);
   }
 
   /// Shows a centered, blocking loading dialog that cannot be dismissed by an
