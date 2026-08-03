@@ -1,0 +1,22 @@
+# Release signing configuration — TEMPLATE.
+#
+# Copy this file to android/key.properties (git-ignored) and fill in the real
+# values. android/app/build.gradle.kts reads it to sign release builds with the
+# shared release keystore so Standard (標準) and Customized (カスタマイズ) APKs
+# update each other in place. If android/key.properties is absent, release builds
+# fall back to the debug keystore (NOT update-compatible across machines).
+#
+# Generate the keystore once and keep it backed up — losing it permanently breaks
+# update-compatibility for already-installed apps:
+#
+#   keytool -genkeypair -v \
+#     -keystore android/keystore/release.jks \
+#     -alias smartphone_handy \
+#     -keyalg RSA -keysize 2048 -validity 10000
+#
+# storeFile is resolved relative to the android/ directory.
+
+storeFile=keystore/release.jks
+storePassword=CHANGE_ME
+keyAlias=smartphone_handy
+keyPassword=CHANGE_ME

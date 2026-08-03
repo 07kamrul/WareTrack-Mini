@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Overridden per build via resValue() in build.gradle.kts for the
+         trial API environment — see appBuildApiEnv. -->
+    <string name="app_name">WareTrack Mini</string>
+</resources>

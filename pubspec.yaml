@@ -1,0 +1,86 @@
+name: waretrack_mini
+description: "WareTrack Mini — barcode, QR, and OCR scanning app."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_bloc: ^9.1.1
+  get_it: ^8.2.0
+  mobile_scanner: ^7.1.2
+  google_mlkit_barcode_scanning: ^0.14.1
+  google_mlkit_text_recognition: ^0.15.0
+  image_picker: ^1.2.0
+  audioplayers: ^6.6.0
+  shared_preferences: ^2.5.3
+  sqflite: ^2.4.2
+  path: ^1.9.1
+  excel: ^4.0.6
+  path_provider: ^2.1.5
+  http: ^1.6.0
+  android_id: ^0.4.0
+  package_info_plus: ^10.1.0
+  open_filex: ^4.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  # Pinned below 2.4.5: newer versions require image ^4.5.2, which pulls
+  # archive ^4.x and conflicts with excel's archive ^3.6.1 constraint.
+  flutter_native_splash: ">=2.4.2 <2.4.5"
+  # Used by tool/generate_branding_images.dart (also a transitive dep above).
+  # Capped <4.5.2 for the same excel/archive compatibility reason.
+  image: ">=4.3.0 <4.5.2"
+
+# App launcher icon generation (run: dart run flutter_launcher_icons)
+flutter_launcher_icons:
+  android: true
+  ios: true
+  # White-background, padded logo for legacy Android icons and iOS.
+  image_path: "assets/images/branding/app_icon.png"
+  remove_alpha_ios: true
+  background_color_ios: "#FFFFFF"
+  min_sdk_android: 21
+  # Adaptive icon: solid white background + centered, padded foreground.
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/branding/app_icon_foreground.png"
+
+# Native splash screen generation (run: dart run flutter_native_splash:create)
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/images/branding/splash_logo.png"
+  android: true
+  ios: true
+  android_12:
+    color: "#FFFFFF"
+    image: "assets/images/branding/splash_logo.png"
+
+flutter:
+
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/audios/
+    - assets/images/app_logo.png
+    - assets/images/app_logo_trial.png
+    - assets/images/branding/app_icon.png
+    - assets/images/branding/app_icon_trial.png
+    - assets/images/branding/jaroc_logo.png
+    - assets/files/Zaicom Mini操作マニュアル（スマートフォン操作用)_20260731.pdf
+
+  # Localization: Japanese only
+  # Removed English localization to reduce APK size
