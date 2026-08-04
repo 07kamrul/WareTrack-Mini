@@ -600,4 +600,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shelfMatchLabel => 'Shelf match:';
+
+  @override
+  String get emailOrUsername => 'Email or Username';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
 }

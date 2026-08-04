@@ -67,71 +67,25 @@ void main() {
   });
 
   group('clearOnEnvironmentChange', () {
-    test('clears data cached by a different API environment', () async {
+    test('clears unstamped data', () async {
+      SharedPreferences.setMockInitialValues({});
+      final preferences = await SharedPreferences.getInstance();
+
+      await LocalStorageUpdateService.clearOnEnvironmentChange(preferences);
+
+      expect(preferences.getString(kApiEnv), 'default');
+    });
+
+    test('keeps data when already stamped', () async {
       SharedPreferences.setMockInitialValues({
-        kApiEnv: 'demo395',
-        kIsVerified: true,
-        kAccesscode: '12345678',
+        kApiEnv: 'default',
         kLastUpdateTime: '100',
       });
       final preferences = await SharedPreferences.getInstance();
 
-      await LocalStorageUpdateService.clearOnEnvironmentChange(
-        preferences,
-        currentApiEnv: 'demo440',
-      );
+      await LocalStorageUpdateService.clearOnEnvironmentChange(preferences);
 
-      expect(preferences.getBool(kIsVerified), isNull);
-      expect(preferences.getString(kAccesscode), isNull);
-      expect(preferences.getString(kApiEnv), 'demo440');
       expect(preferences.getString(kLastUpdateTime), '100');
-    });
-
-    test('clears unstamped data left by a pre-stamp build', () async {
-      SharedPreferences.setMockInitialValues({
-        kIsVerified: true,
-        kAccesscode: '12345678',
-      });
-      final preferences = await SharedPreferences.getInstance();
-
-      await LocalStorageUpdateService.clearOnEnvironmentChange(
-        preferences,
-        currentApiEnv: 'demo440',
-      );
-
-      expect(preferences.getBool(kIsVerified), isNull);
-      expect(preferences.getString(kAccesscode), isNull);
-      expect(preferences.getString(kApiEnv), 'demo440');
-    });
-
-    test('keeps data cached by the same API environment', () async {
-      SharedPreferences.setMockInitialValues({
-        kApiEnv: 'demo440',
-        kIsVerified: true,
-        kAccesscode: '12345678',
-      });
-      final preferences = await SharedPreferences.getInstance();
-
-      await LocalStorageUpdateService.clearOnEnvironmentChange(
-        preferences,
-        currentApiEnv: 'demo440',
-      );
-
-      expect(preferences.getBool(kIsVerified), isTrue);
-      expect(preferences.getString(kAccesscode), '12345678');
-      expect(preferences.getString(kApiEnv), 'demo440');
-    });
-
-    test('stamps the environment on a fresh install', () async {
-      SharedPreferences.setMockInitialValues({});
-      final preferences = await SharedPreferences.getInstance();
-
-      await LocalStorageUpdateService.clearOnEnvironmentChange(
-        preferences,
-        currentApiEnv: 'jarocClient',
-      );
-
-      expect(preferences.getString(kApiEnv), 'jarocClient');
     });
   });
 }

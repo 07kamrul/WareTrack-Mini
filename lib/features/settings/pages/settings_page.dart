@@ -71,8 +71,8 @@ class _SettingsView extends StatelessWidget {
                               ),
                               const SizedBox(height: 16),
                               AppInfoCard(
-                                appName: AppBuildConfig.apiPayloadName,
-                                appVersion: AppBuildConfig.appVersion,
+                                appName: AppBuildConfig.appName,
+                                appVersion: '',
                               ),
                             ],
                           ),

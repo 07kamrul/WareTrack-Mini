@@ -602,4 +602,16 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get shelfMatchLabel => 'শেলফ মিল:';
+
+  @override
+  String get emailOrUsername => 'ইমেইল বা ব্যবহারকারীর নাম';
+
+  @override
+  String get forgotPassword => 'পাসওয়ার্ড ভুলে গেছেন?';
+
+  @override
+  String get dontHaveAccount => 'অ্যাকাউন্ট নেই?';
+
+  @override
+  String get alreadyHaveAccount => 'ইতিমধ্যে অ্যাকাউন্ট আছে?';
 }

@@ -1,5 +1,7 @@
 import 'package:waretrack_mini/core/constants/app_routes.dart';
 import 'package:waretrack_mini/data/models/scanner_option.dart';
+import 'package:waretrack_mini/features/auth/pages/sign_in_page.dart';
+import 'package:waretrack_mini/features/auth/pages/sign_up_page.dart';
 import 'package:waretrack_mini/features/inventory/pages/inventory_selection_page.dart';
 import 'package:waretrack_mini/features/main_menu/pages/home_page.dart';
 import 'package:waretrack_mini/features/receiving/pages/product_scan_page.dart';
@@ -20,6 +22,8 @@ class AppRouter {
   static final RouteObserver<ModalRoute<dynamic>> routeObserver =
       RouteObserver<ModalRoute<dynamic>>();
 
+  static const String signIn = 'signIn';
+  static const String signUp = 'signUp';
   static const String home = AppRoutes.home;
   static const String liveScanner = AppRoutes.liveScanner;
   static const String receivingSelection = AppRoutes.receivingSelection;
@@ -33,6 +37,10 @@ class AppRouter {
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case signIn:
+        return MaterialPageRoute(builder: (_) => const SignInPage());
+      case signUp:
+        return MaterialPageRoute(builder: (_) => const SignUpPage());
       case home:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case liveScanner:
@@ -70,7 +78,7 @@ class AppRouter {
       case AppRoutes.settings:
         return MaterialPageRoute(builder: (_) => const SettingsPage());
       default:
-        return MaterialPageRoute(builder: (_) => const HomePage());
+        return MaterialPageRoute(builder: (_) => const SignInPage());
     }
   }
 

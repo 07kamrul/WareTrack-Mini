@@ -7,7 +7,7 @@ import 'package:waretrack_mini/core/utils/app_settings.dart';
 import 'package:waretrack_mini/core/utils/app_settings_scope.dart';
 import 'package:waretrack_mini/core/constants/app_theme.dart';
 import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
-import 'package:waretrack_mini/features/main_menu/pages/home_page.dart';
+import 'package:waretrack_mini/features/auth/pages/sign_in_page.dart';
 
 class WareTrackMiniApp extends StatefulWidget {
   const WareTrackMiniApp({super.key});
@@ -43,7 +43,7 @@ class _WareTrackMiniAppState extends State<WareTrackMiniApp> {
             themeMode: ThemeMode.light,
             theme: lightTheme,
             darkTheme: lightTheme,
-            home: const HomePage(),
+            home: const SignInPage(),
             navigatorKey: AppRouter.navigatorKey,
             navigatorObservers: [AppRouter.routeObserver],
             onGenerateRoute: AppRouter.onGenerateRoute,

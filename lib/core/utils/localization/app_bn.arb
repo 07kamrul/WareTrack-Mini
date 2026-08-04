@@ -192,5 +192,9 @@
   "shelfPlacementSaveFailed": "শেলফ স্থাপন ডেটা সংরক্ষণ করা যায়নি।",
   "shelfPlacementScanSubtitle": "শেলফ স্থাপন বারকোড পরিদর্শন",
   "stocktakingScanSubtitle": "মজুদ গণনা বারকোড পরিদর্শন",
-  "shelfMatchLabel": "শেলফ মিল:"
+  "shelfMatchLabel": "শেলফ মিল:",
+  "emailOrUsername": "ইমেইল বা ব্যবহারকারীর নাম",
+  "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+  "dontHaveAccount": "অ্যাকাউন্ট নেই?",
+  "alreadyHaveAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?"
 }

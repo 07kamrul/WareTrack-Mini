@@ -1,64 +1,65 @@
 Running `(cd /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/; ANDROID_HOME=/Users/07kamrul/Library/Android/sdk TMPDIR=/var/folders/rj/44r_kjqn3k59vy88hx378hrr0000gn/T/ NO_PROXY=127.0.0.1,localhost,::1 PATH=/opt/homebrew/bin:/Users/07kamrul/development/flutter/bin:/Users/07kamrul/.bun/bin:/Users/07kamrul/.antigravity/antigravity/bin:/Users/07kamrul/.local/bin:/Library/Frameworks/Python.framework/Versions/3.14/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/share/dotnet:~/.dotnet/tools:/opt/homebrew/bin:/Users/07kamrul/development/flutter/bin:/usr/local/mysql-9.0.1-macos14-arm64/bin:/Users/07kamrul/.pub-cache/bin:/usr/local/mysql-9.5.0-macos15-arm64/bin:/Users/07kamrul/Library/Android/sdk/cmdline-tools/latest/bin:/Users/07kamrul/Library/Android/sdk/platform-tools:/Users/07kamrul/Library/Android/sdk/emulator:/usr/local/bin:/usr/local/mysql-9.0.1-macos14-arm64/bin HOME=/Users/07kamrul no_proxy=127.0.0.1,localhost,::1 /Users/07kamrul/development/flutter/bin/cache/dart-sdk/bin/dart '--packages=/Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/package_config.json' '/Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/objective_c/7ad245dadc/hook.dill' '--config=/Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/objective_c/7ad245dadc/input.json' )`.
-INFO: 2026-08-04 01:03:50.299010: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+INFO: 2026-08-04 01:32:05.136885: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
 
-INFO: 2026-08-04 01:03:50.422045: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+INFO: 2026-08-04 01:32:05.253943: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
 
-INFO: 2026-08-04 01:03:50.430649: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/include/dart_api_dl.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
+INFO: 2026-08-04 01:32:05.263760: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/include/dart_api_dl.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
 
-INFO: 2026-08-04 01:03:50.430942: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
+INFO: 2026-08-04 01:32:05.264079: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
 
-INFO: 2026-08-04 01:03:50.431060: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/test/util.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
+INFO: 2026-08-04 01:32:05.264303: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/test/util.c -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
 
-INFO: 2026-08-04 01:03:50.431157: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/input_stream_adapter.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
+INFO: 2026-08-04 01:32:05.264419: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/input_stream_adapter.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
 
-INFO: 2026-08-04 01:03:50.431247: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
+INFO: 2026-08-04 01:32:05.264513: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
 
-INFO: 2026-08-04 01:03:50.431331: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/observer.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
+INFO: 2026-08-04 01:32:05.264600: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/observer.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
 
-INFO: 2026-08-04 01:03:50.431417: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/ns_number.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
+INFO: 2026-08-04 01:32:05.264686: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/ns_number.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
 
-INFO: 2026-08-04 01:03:50.431539: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/protocol.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
+INFO: 2026-08-04 01:32:05.264799: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/protocol.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
 
-INFO: 2026-08-04 01:03:50.431662: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c_bindings_generated.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
+INFO: 2026-08-04 01:32:05.264921: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/07kamrul/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c_bindings_generated.m -fpic -I src -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
 
-INFO: 2026-08-04 01:03:50.566247: 
-INFO: 2026-08-04 01:03:50.566333: 
-INFO: 2026-08-04 01:03:50.566358: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
-INFO: 2026-08-04 01:03:50.566423: 
-INFO: 2026-08-04 01:03:50.566432: 
-INFO: 2026-08-04 01:03:50.566440: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
+INFO: 2026-08-04 01:32:05.371366: 
+INFO: 2026-08-04 01:32:05.371499: 
+INFO: 2026-08-04 01:32:05.371528: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
 
-INFO: 2026-08-04 01:03:50.568976: 
-INFO: 2026-08-04 01:03:50.569009: 
-INFO: 2026-08-04 01:03:50.569020: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
+INFO: 2026-08-04 01:32:05.371808: 
+INFO: 2026-08-04 01:32:05.371854: 
+INFO: 2026-08-04 01:32:05.371896: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
 
-INFO: 2026-08-04 01:03:50.574763: 
-INFO: 2026-08-04 01:03:50.574826: 
-INFO: 2026-08-04 01:03:50.574848: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
+INFO: 2026-08-04 01:32:05.378994: 
+INFO: 2026-08-04 01:32:05.379061: 
+INFO: 2026-08-04 01:32:05.379082: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
 
-INFO: 2026-08-04 01:03:50.576779: 
-INFO: 2026-08-04 01:03:50.576823: 
-INFO: 2026-08-04 01:03:50.576874: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
+INFO: 2026-08-04 01:32:05.379481: 
+INFO: 2026-08-04 01:32:05.379517: 
+INFO: 2026-08-04 01:32:05.379537: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
 
-INFO: 2026-08-04 01:03:50.797810: 
-INFO: 2026-08-04 01:03:50.797846: 
-INFO: 2026-08-04 01:03:50.797856: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
+INFO: 2026-08-04 01:32:05.381398: 
+INFO: 2026-08-04 01:32:05.381433: 
+INFO: 2026-08-04 01:32:05.381443: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
 
-INFO: 2026-08-04 01:03:50.803611: 
-INFO: 2026-08-04 01:03:50.803662: 
-INFO: 2026-08-04 01:03:50.803671: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
+INFO: 2026-08-04 01:32:05.644198: 
+INFO: 2026-08-04 01:32:05.644265: 
+INFO: 2026-08-04 01:32:05.644285: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
 
-INFO: 2026-08-04 01:03:50.805537: 
-INFO: 2026-08-04 01:03:50.805558: 
-INFO: 2026-08-04 01:03:50.805567: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
+INFO: 2026-08-04 01:32:05.649883: 
+INFO: 2026-08-04 01:32:05.649924: 
+INFO: 2026-08-04 01:32:05.649933: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
 
-INFO: 2026-08-04 01:03:50.821097: 
-INFO: 2026-08-04 01:03:50.821129: 
-INFO: 2026-08-04 01:03:50.821138: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
+INFO: 2026-08-04 01:32:05.651885: 
+INFO: 2026-08-04 01:32:05.651915: 
+INFO: 2026-08-04 01:32:05.651924: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
 
-INFO: 2026-08-04 01:03:50.821413: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+INFO: 2026-08-04 01:32:05.664826: 
+INFO: 2026-08-04 01:32:05.664858: 
+INFO: 2026-08-04 01:32:05.664866: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
 
-INFO: 2026-08-04 01:03:50.945258: 
-INFO: 2026-08-04 01:03:50.945319: 
-INFO: 2026-08-04 01:03:50.945331: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+INFO: 2026-08-04 01:32:05.665197: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -target arm64-apple-darwin -mmacos-version-min=13 /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o -o /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+
+INFO: 2026-08-04 01:32:05.824446: 
+INFO: 2026-08-04 01:32:05.824541: 
+INFO: 2026-08-04 01:32:05.824564: Generated /Users/07kamrul/Developer/Personal/WareTrack Mini/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
 

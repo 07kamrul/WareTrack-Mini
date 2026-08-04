@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:waretrack_mini/core/utils/app_configure.dart';
 import 'package:waretrack_mini/core/widgets/primary_app_bar.dart';
 
 class AuthShell extends StatelessWidget {
@@ -98,9 +97,7 @@ class _AuthHeader extends StatelessWidget {
           width: 76,
           height: 76,
           child: Image.asset(
-            AppBuildConfig.isTrial
-                ? 'assets/images/app_logo_trial.png'
-                : 'assets/images/app_logo.png',
+            'assets/images/app_logo.png',
             fit: BoxFit.contain,
           ),
         ),

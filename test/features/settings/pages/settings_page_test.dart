@@ -56,9 +56,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('App Information'), findsOneWidget);
     expect(find.text('App Name'), findsOneWidget);
-    expect(find.text(AppBuildConfig.apiPayloadName), findsOneWidget);
+    expect(find.text(AppBuildConfig.appName), findsNWidgets(2));
     expect(find.text('App Version'), findsOneWidget);
-    expect(find.text(AppBuildConfig.appVersion), findsOneWidget);
     expect(find.text('Theme'), findsNothing);
     expect(find.text('Light'), findsNothing);
     expect(find.text('Dark'), findsNothing);

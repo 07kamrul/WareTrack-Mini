@@ -192,5 +192,9 @@
   "shelfPlacementSaveFailed": "Could not save the shelf placement data.",
   "shelfPlacementScanSubtitle": "Shelf Placement Barcode Inspection",
   "stocktakingScanSubtitle": "Stocktaking Barcode Inspection",
-  "shelfMatchLabel": "Shelf match:"
+  "shelfMatchLabel": "Shelf match:",
+  "emailOrUsername": "Email or Username",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?"
 }

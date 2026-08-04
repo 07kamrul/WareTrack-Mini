@@ -128,9 +128,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
             final zaicomTile = ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Image.asset(
-                AppBuildConfig.isTrial
-                    ? 'assets/images/branding/app_icon_trial.png'
-                    : 'assets/images/branding/app_icon.png',
+                'assets/images/branding/app_icon.png',
                 height: _logoSize,
                 width: _logoSize,
                 fit: BoxFit.contain,
