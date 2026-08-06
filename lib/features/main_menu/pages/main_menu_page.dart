@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:waretrack_mini/core/services/app_router.dart';
-import 'package:waretrack_mini/core/services/manual_service.dart';
 import 'package:waretrack_mini/data/models/scanner_option.dart';
 import 'package:waretrack_mini/core/utils/localization/app_localizations.dart';
 import 'package:waretrack_mini/core/widgets/primary_app_bar.dart';
@@ -48,8 +47,7 @@ class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
-    // final colorScheme = Theme.of(context).colorScheme;
-    // final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -57,11 +55,7 @@ class MainMenuPage extends StatelessWidget {
         title: localizations.mainMenu,
         showBackButton: false,
         showHelpButton: true,
-        onHelpPressed: () => ManualService.openManual(context),
-        leading: const PrimaryAppBarAction(
-          icon: Icons.person,
-          label: '-',
-        ),
+        leading: const PrimaryAppBarAction(icon: Icons.person, label: '-'),
       ),
       body: SafeArea(
         child: LayoutBuilder(
@@ -105,36 +99,36 @@ class MainMenuPage extends StatelessWidget {
                                   ),
                               ],
                             ),
-                            // SizedBox(height: metrics.logoutGap),
-                            // SizedBox(
-                            //   width: double.infinity,
-                            //   height: 56,
-                            //   child: OutlinedButton.icon(
-                            //     onPressed: () => Navigator.of(
-                            //       context,
-                            //     ).pushReplacementNamed(AppRouter.signIn),
-                            //     icon: const Icon(Icons.arrow_back_rounded),
-                            //     label: Text(localizations.logout),
-                            //     style: OutlinedButton.styleFrom(
-                            //       foregroundColor: isDark
-                            //           ? colorScheme.onSurface
-                            //           : Colors.black,
-                            //       side: BorderSide(
-                            //         color: colorScheme.primary.withValues(
-                            //           alpha: 0.65,
-                            //         ),
-                            //       ),
-                            //       shape: RoundedRectangleBorder(
-                            //         borderRadius: BorderRadius.circular(8),
-                            //       ),
-                            //       textStyle: Theme.of(context).textTheme.titleSmall
-                            //           ?.copyWith(
-                            //             fontWeight: FontWeight.w800,
-                            //             letterSpacing: 0,
-                            //           ),
-                            //     ),
-                            //   ),
-                            // ),
+                            SizedBox(height: metrics.logoutGap),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 56,
+                              child: OutlinedButton.icon(
+                                onPressed: () => Navigator.of(
+                                  context,
+                                ).pushReplacementNamed(AppRouter.signIn),
+                                icon: const Icon(Icons.arrow_back_rounded),
+                                label: Text(localizations.logout),
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor: Colors.black,
+                                  side: BorderSide(
+                                    color: colorScheme.primary.withOpacity(
+                                      0.65,
+                                    ),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: 0,
+                                      ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -147,7 +141,7 @@ class MainMenuPage extends StatelessWidget {
                     bottom: metrics.pagePadding,
                   ),
                   child: Image.asset(
-                    'assets/images/branding/jaroc_logo.png',
+                    'assets/images/branding/app_logo.png',
                     width: 220,
                     fit: BoxFit.contain,
                   ),
