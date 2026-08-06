@@ -37,8 +37,8 @@ class MailService {
       ..attachments.add(FileAttachment(excelFile));
 
     try {
-      final sendReport = await send(message, smtpServer);
-      return sendReport.isNotEmpty;
+      await send(message, smtpServer);
+      return true;
     } on MailerException catch (e) {
       throw Exception('Failed to send email: ${e.message}');
     } catch (e) {
