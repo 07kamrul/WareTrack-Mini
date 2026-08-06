@@ -141,7 +141,7 @@ class MainMenuPage extends StatelessWidget {
                     bottom: metrics.pagePadding,
                   ),
                   child: Image.asset(
-                    'assets/images/branding/app_logo.png',
+                    'assets/images/app_logo.png',
                     width: 220,
                     fit: BoxFit.contain,
                   ),

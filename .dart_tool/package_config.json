@@ -224,6 +224,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_dotenv-6.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_launcher_icons",
       "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_launcher_icons-0.14.4",
       "packageUri": "lib/",
@@ -428,6 +434,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "mailer",
+      "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/mailer-7.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.19",
       "packageUri": "lib/",
@@ -572,6 +584,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "punycoder",
+      "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/punycoder-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.5.5",
       "packageUri": "lib/",
@@ -702,6 +720,12 @@
       "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/universal_io-2.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.6"
+    },
+    {
+      "name": "unorm_dart",
+      "rootUri": "file:///C:/Users/kamrul/AppData/Local/Pub/Cache/hosted/pub.dev/unorm_dart-0.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "uuid",

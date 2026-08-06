@@ -1,4 +1,5 @@
 import 'package:waretrack_mini/core/services/export_file_service.dart';
+import 'package:waretrack_mini/core/services/mail_service.dart';
 import 'package:waretrack_mini/core/services/completed_work_service.dart';
 import 'package:waretrack_mini/core/database/app_database.dart';
 import 'package:waretrack_mini/core/models/inspection_work_type.dart';
@@ -44,6 +45,7 @@ Future<void> configureDependencies() async {
 
   sl.registerLazySingleton<ScanFeedbackService>(() => ScanFeedbackService());
   sl.registerLazySingleton<ExportFileService>(() => const ExportFileService());
+  sl.registerLazySingleton<MailService>(() => MailService());
   sl.registerLazySingleton<LocalStorage>(() => localStorage);
   sl.registerLazySingleton<AppSettingsRepository>(() => settingsRepository);
   sl.registerLazySingleton<AppSettingsController>(

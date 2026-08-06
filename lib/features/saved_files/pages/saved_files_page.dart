@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:waretrack_mini/core/services/mail_service.dart';
 import 'package:waretrack_mini/core/services/app_bindings.dart';
 import 'package:waretrack_mini/core/services/completed_work_service.dart';
 import 'package:waretrack_mini/core/models/completed_work_models.dart';
@@ -167,14 +169,28 @@ class _SavedFilesPageState extends State<SavedFilesPage> {
         slipNumber: work.slipNumber,
         completedAt: work.completedAt,
       );
+      
+      final mailService = sl<MailService>();
+      final emailAddress = _completedWorkService.emailAddress;
+      if (emailAddress.isEmpty) {
+        throw Exception("Email address is missing in Settings.");
+      }
+
+      await mailService.sendExcelReport(
+        recipientEmail: emailAddress,
+        excelFile: File(result.filePath),
+        subject: 'WareTrack Mini Export - ${work.slipNumber}',
+      );
+
       await _completedWorkService.markWorkSent(
         work.workType,
         work.slipNumber,
       );
-      resultMessage = '${l10n.sendMailSuccess} (${result.filePath})';
+      resultMessage = l10n.sendMailSuccess;
       success = true;
     } catch (error) {
-      resultMessage = l10n.workSendFailed;
+      final msg = error.toString().replaceFirst('Exception: ', '');
+      resultMessage = '${l10n.workSendFailed}\n$msg';
     } finally {
       _dismissSendingDialog();
       if (mounted) {

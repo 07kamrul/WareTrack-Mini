@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:waretrack_mini/app.dart';
 import 'package:waretrack_mini/core/services/app_bindings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   _ignoreMobileScannerInactiveOrientationStreamError();
   await configureDependencies();
   runApp(const WareTrackMiniApp());

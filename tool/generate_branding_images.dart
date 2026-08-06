@@ -1,11 +1,3 @@
-// Generates padded branding source images from assets/images/app_logo.png.
-//
-// Outputs (consumed by flutter_launcher_icons / flutter_native_splash):
-//   assets/images/branding/app_icon.png            – white bg, padded (iOS + legacy Android)
-//   assets/images/branding/app_icon_foreground.png – transparent, extra padding (adaptive fg)
-//   assets/images/branding/splash_logo.png         – transparent, centered (native splash)
-//
-// Run: dart run tool/generate_branding_images.dart
 import 'dart:io';
 
 import 'package:image/image.dart' as img;
@@ -51,7 +43,7 @@ img.Image _composePadded(
 
 void main() {
   const src = 'assets/images/app_logo.png';
-  const outDir = 'assets/images/branding';
+  const outDir = 'assets/images/';
 
   final logo = img.decodePng(File(src).readAsBytesSync());
   if (logo == null) {
@@ -82,12 +74,8 @@ void main() {
     '$outDir/app_icon_foreground.png',
   ).writeAsBytesSync(img.encodePng(foreground));
 
-  final splash = _composePadded(
-    logo,
-    canvasSize: 384,
-    contentFraction: 0.80,
-  );
-  File('$outDir/splash_logo.png').writeAsBytesSync(img.encodePng(splash));
+  final splash = _composePadded(logo, canvasSize: 384, contentFraction: 0.80);
+  File('$outDir/app_logo.png').writeAsBytesSync(img.encodePng(splash));
 
-  stdout.writeln('Generated branding images in $outDir/');
+  stdout.writeln('Generated images in $outDir/');
 }

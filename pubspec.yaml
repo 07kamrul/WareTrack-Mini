@@ -30,6 +30,8 @@ dependencies:
   android_id: ^0.4.0
   package_info_plus: ^10.1.0
   open_filex: ^4.7.0
+  mailer: ^7.2.0
+  flutter_dotenv: ^6.0.1
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +42,6 @@ dev_dependencies:
   # Pinned below 2.4.5: newer versions require image ^4.5.2, which pulls
   # archive ^4.x and conflicts with excel's archive ^3.6.1 constraint.
   flutter_native_splash: ">=2.4.2 <2.4.5"
-  # Used by tool/generate_branding_images.dart (also a transitive dep above).
   # Capped <4.5.2 for the same excel/archive compatibility reason.
   image: ">=4.3.0 <4.5.2"
 
@@ -73,6 +74,7 @@ flutter:
   generate: true
 
   assets:
+    - .env
     - assets/audios/
     - assets/images/app_logo.png
 
