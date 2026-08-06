@@ -49,23 +49,23 @@ flutter_launcher_icons:
   android: true
   ios: true
   # White-background, padded logo for legacy Android icons and iOS.
-  image_path: "assets/images/branding/app_icon.png"
+  image_path: "assets/images/app_logo.png"
   remove_alpha_ios: true
   background_color_ios: "#FFFFFF"
   min_sdk_android: 21
   # Adaptive icon: solid white background + centered, padded foreground.
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/branding/app_icon_foreground.png"
+  adaptive_icon_foreground: "assets/images/app_logo.png"
 
 # Native splash screen generation (run: dart run flutter_native_splash:create)
 flutter_native_splash:
   color: "#FFFFFF"
-  image: "assets/images/branding/splash_logo.png"
+  image: "assets/images/app_logo.png"
   android: true
   ios: true
   android_12:
     color: "#FFFFFF"
-    image: "assets/images/branding/splash_logo.png"
+    image: "assets/images/app_logo.png"
 
 flutter:
 
@@ -75,11 +75,6 @@ flutter:
   assets:
     - assets/audios/
     - assets/images/app_logo.png
-    - assets/images/app_logo_trial.png
-    - assets/images/branding/app_icon.png
-    - assets/images/branding/app_icon_trial.png
-    - assets/images/branding/jaroc_logo.png
-    - assets/files/Zaicom Mini操作マニュアル（スマートフォン操作用)_20260731.pdf
 
   # Localization: Japanese only
   # Removed English localization to reduce APK size
